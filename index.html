@@ -1,0 +1,1100 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>噶陀仁珍千寶課程平台</title>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore-compat.js"></script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft JhengHei", sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+
+        /* 共用樣式 */
+        .hidden {
+            display: none !important;
+        }
+
+        .page {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* 首頁樣式 */
+        .landing-page {
+            background: linear-gradient(135deg, #8B6F47 0%, #D4A574 50%, #FFD700 100%);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .landing-page::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: moveBackground 20s linear infinite;
+        }
+
+        @keyframes moveBackground {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        .landing-content {
+            position: relative;
+            z-index: 1;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .logo-container {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 2rem;
+            background: white;
+            border-radius: 50%;
+            padding: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .logo-svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .site-title {
+            font-size: 3rem;
+            color: white;
+            font-weight: bold;
+            margin-bottom: 3rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .enter-btn {
+            background: white;
+            color: #8B6F47;
+            border: none;
+            padding: 1.25rem 3rem;
+            font-size: 1.25rem;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transition: all 0.3s;
+        }
+
+        .enter-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+            background: #FFD700;
+            color: #8B4513;
+        }
+
+        /* 選擇頁面樣式 */
+        .choice-page {
+            background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+        }
+
+        .choice-container {
+            display: flex;
+            gap: 3rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .choice-card {
+            background: white;
+            padding: 3rem 2rem;
+            border-radius: 20px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: all 0.3s;
+            cursor: pointer;
+            width: 300px;
+        }
+
+        .choice-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .choice-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .choice-title {
+            font-size: 1.5rem;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+
+        .choice-description {
+            color: #7f8c8d;
+            line-height: 1.6;
+        }
+
+        .back-btn {
+            position: fixed;
+            top: 2rem;
+            left: 2rem;
+            background: white;
+            color: #8B6F47;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            font-weight: bold;
+        }
+
+        .back-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        /* 主應用程式樣式 */
+        .main-app {
+            background: white;
+            width: 100%;
+            flex-direction: column;
+        }
+
+        .navbar {
+            width: 100%;
+            background: linear-gradient(135deg, #8B6F47 0%, #D4A574 100%);
+            color: white;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo-small {
+            width: 40px;
+            height: 40px;
+            background: white;
+            border-radius: 50%;
+            padding: 5px;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .nav-btn {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 0.875rem;
+        }
+
+        .nav-btn:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-1px);
+        }
+
+        .main-container {
+            display: flex;
+            flex: 1;
+            width: 100%;
+        }
+
+        .sidebar {
+            width: 300px;
+            background-color: #2c3e50;
+            color: white;
+            padding: 1.5rem;
+            overflow-y: auto;
+        }
+
+        .sidebar h2 {
+            margin-bottom: 1.5rem;
+            font-size: 1.25rem;
+        }
+
+        .course-list {
+            list-style: none;
+        }
+
+        .course-item {
+            padding: 1rem;
+            margin-bottom: 0.75rem;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .course-item:hover {
+            background-color: rgba(255, 255, 255, 0.15);
+            transform: translateX(5px);
+        }
+
+        .course-item.active {
+            background-color: #D4A574;
+        }
+
+        .course-item.locked {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .course-item.locked::after {
+            content: " 🔒";
+        }
+
+        .content-area {
+            flex: 1;
+            padding: 2rem;
+            background-color: white;
+        }
+
+        .welcome-message {
+            text-align: center;
+            padding: 3rem;
+            color: #7f8c8d;
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+            background-color: #000;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .course-content {
+            margin-top: 2rem;
+        }
+
+        .course-content h3 {
+            margin-bottom: 1rem;
+            color: #2c3e50;
+        }
+
+        .course-content p {
+            line-height: 1.8;
+            color: #555;
+            white-space: pre-line;
+        }
+
+        /* 登入表單樣式 */
+        .auth-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .auth-form {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 12px;
+            width: 400px;
+            max-width: 90%;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            position: relative; /* For close button positioning */
+        }
+
+        .auth-form h2 {
+            margin-bottom: 2rem;
+            text-align: center;
+            color: #2c3e50;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #555;
+            font-weight: 500;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #e9ecef;
+            border-radius: 6px;
+            font-size: 1rem;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #8B6F47;
+        }
+
+        .auth-btn {
+            width: 100%;
+            padding: 0.875rem;
+            background-color: #8B6F47;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-bottom: 1rem;
+            display: flex; /* For loading spinner alignment */
+            justify-content: center;
+            align-items: center;
+        }
+
+        .auth-btn:hover {
+            background-color: #D4A574;
+        }
+
+        .auth-btn.secondary {
+            background-color: #6c757d;
+        }
+
+        .auth-btn.secondary:hover {
+            background-color: #5a6268;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #999;
+        }
+
+        .error-message {
+            color: #dc3545;
+            font-size: 0.875rem;
+            margin-top: 0.5rem;
+            text-align: center;
+            min-height: 1.2em; /* Reserve space to prevent layout shift */
+        }
+
+        .success-message {
+            color: #28a745;
+            font-size: 0.875rem;
+            margin-top: 0.5rem;
+            text-align: center;
+            min-height: 1.2em; /* Reserve space */
+        }
+
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid #f3f3f3; /* Light grey */
+            border-top: 3px solid #8B6F47; /* Main color */
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-left: 10px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* 響應式設計 */
+        @media (max-width: 768px) {
+            .site-title { font-size: 2rem; }
+            .choice-container { flex-direction: column; align-items: center; }
+            .main-container { flex-direction: column; }
+            .sidebar { width: 100%; }
+            .auth-form { width: 90%; padding: 2rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- 首頁 -->
+    <div id="landingPage" class="page landing-page">
+        <div class="landing-content">
+            <div class="logo-container">
+                <svg class="logo-svg" viewBox="0 0 200 200">
+                    <circle cx="100" cy="100" r="90" fill="none" stroke="#D4A574" stroke-width="8"/>
+                    <polygon points="100,40 160,140 40,140" fill="none" stroke="#D4A574" stroke-width="6"/>
+                    <circle cx="100" cy="100" r="15" fill="#D4A574"/>
+                    <circle cx="70" cy="130" r="8" fill="#D4A574"/>
+                    <circle cx="130" cy="130" r="8" fill="#D4A574"/>
+                </svg>
+            </div>
+            <h1 class="site-title">噶陀仁珍千寶課程平台</h1>
+            <button class="enter-btn" onclick="showChoicePage()">進入學習</button>
+        </div>
+    </div>
+
+    <!-- 選擇頁面 -->
+    <div id="choicePage" class="page choice-page hidden">
+        <button class="back-btn" onclick="showLandingPage()">← 返回首頁</button>
+        <div class="choice-container">
+            <div class="choice-card" onclick="enterAsGuest()">
+                <div class="choice-icon">👁️</div>
+                <h2 class="choice-title">一般使用</h2>
+                <p class="choice-description">無需登入即可觀看基礎課程內容，適合初次瞭解佛法的朋友</p>
+            </div>
+            <div class="choice-card" onclick="showAuthModal('login')">
+                <div class="choice-icon">🔐</div>
+                <h2 class="choice-title">會員登入</h2>
+                <p class="choice-description">登入後可觀看進階課程，包含四加行、生起次第、圓滿次第等深入教學</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 主應用程式 -->
+    <div id="mainApp" class="page main-app hidden">
+        <nav class="navbar">
+            <div class="logo">
+                <div class="logo-small">
+                    <svg viewBox="0 0 200 200">
+                        <circle cx="100" cy="100" r="90" fill="none" stroke="#D4A574" stroke-width="8"/>
+                        <polygon points="100,40 160,140 40,140" fill="none" stroke="#D4A574" stroke-width="6"/>
+                        <circle cx="100" cy="100" r="15" fill="#D4A574"/>
+                    </svg>
+                </div>
+                噶陀仁珍千寶課程平台
+            </div>
+            <div class="nav-actions">
+                <span id="userInfo" style="margin-right: 1rem;">訪客</span>
+                <button id="authButton" class="nav-btn" onclick="handleAuthButtonClick()">登入</button>
+                <button class="nav-btn" onclick="showChoicePage()">返回選單</button>
+            </div>
+        </nav>
+
+        <div class="main-container">
+            <aside class="sidebar">
+                <h2>📚 課程選單</h2>
+                <div id="loadingCourses" style="text-align: center; color: white; padding: 2rem;">
+                    載入課程中...
+                </div>
+                <ul class="course-list" id="courseList">
+                    <!-- 課程將從 Firebase 動態載入 -->
+                </ul>
+            </aside>
+
+            <main class="content-area">
+                <div id="welcomeMessage" class="welcome-message">
+                    <h1>歡迎來到噶陀仁珍千寶課程平台</h1>
+                    <p>請從左側選單選擇您想學習的課程</p>
+                </div>
+
+                <div id="courseContent" class="hidden">
+                    <h1 id="courseTitle"></h1>
+                    <div class="video-container">
+                        <iframe id="youtubePlayer"
+                                src=""
+                                frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen>
+                        </iframe>
+                    </div>
+                    <div class="course-content">
+                        <h3>課程內容</h3>
+                        <p id="courseDescription"></p>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- 登入/註冊彈窗 -->
+    <div id="authModal" class="auth-modal hidden">
+        <div class="auth-form">
+            <button class="close-modal" onclick="closeAuthModal()">✕</button>
+            <h2 id="authTitle">會員登入</h2>
+
+            <div class="form-group">
+                <label for="email">電子郵件</label>
+                <input type="email" id="email" placeholder="請輸入電子郵件" required>
+            </div>
+
+            <div class="form-group" id="usernameGroup" style="display: none;">
+                <label for="username">使用者名稱</label>
+                <input type="text" id="username" placeholder="請輸入使用者名稱">
+            </div>
+
+            <div class="form-group">
+                <label for="password">密碼</label>
+                <input type="password" id="password" placeholder="請輸入密碼" required>
+            </div>
+
+            <div id="errorMessage" class="error-message"></div>
+            <div id="successMessage" class="success-message"></div>
+
+            <button id="authSubmitBtn" class="auth-btn" onclick="handleAuth()">
+                <span id="authBtnText">登入</span>
+                <span id="authLoading" class="loading hidden"></span>
+            </button>
+
+            <button id="authSwitchBtn" class="auth-btn secondary" onclick="toggleAuthMode()">
+                <span id="authSwitchText">還沒有帳號？立即註冊</span>
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // ========== Firebase 設定 ==========
+        // 這是您的 Firebase 專案設定 -- 請務必確認這是您自己的正確設定！
+       // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+            apiKey: "REMOVED_FIREBASE_API_KEY", // 請替換成你自己的真實 API Key
+            authDomain: "REMOVED_FIREBASE_AUTH_DOMAIN", // 請替換成你自己的
+            projectId: "REMOVED_FIREBASE_PROJECT_ID", // 請替換成你自己的
+            storageBucket: "REMOVED_FIREBASE_PROJECT_ID.appspot.com", // 請替換成你自己的 (注意可能是 .firebasestorage.app)
+            messagingSenderId: "REMOVED_FIREBASE_MESSAGING_SENDER_ID", // 請替換成你自己的
+            appId: "1:REMOVED_FIREBASE_MESSAGING_SENDER_ID:web:7eba5e9ab7378ad19c59b0", // 請替換成你自己的
+            measurementId: "REMOVED_FIREBASE_MEASUREMENT_ID" // 請替換成你自己的
+        };
+        let auth;
+        let db;
+
+        // 初始化 Firebase
+        try {
+            firebase.initializeApp(firebaseConfig);
+            console.log("Firebase App initialized successfully:", firebase.app()); // 驗證點
+            auth = firebase.auth();
+            db = firebase.firestore();
+            console.log("Auth and Firestore services initialized."); // 驗證點
+        } catch (e) {
+            console.error("CRITICAL ERROR initializing Firebase:", e);
+        }
+
+        // 在所有 Firebase 初始化之後，但在第一個函數定義之前，加入這個：
+        console.log("Script execution reached before function definitions.");
+
+
+        // ========== 全域變數 ==========
+        let currentUser = null;
+        let currentPage = 'landing';
+        let isLoginMode = true;
+        let courses = [];
+
+        // ========== Firebase Auth 狀態監聽 ==========
+        if (auth) { // 確保 auth 已初始化
+            auth.onAuthStateChanged(async (user) => {
+                if (user) {
+                    console.log("User is signed in:", user.uid);
+                    await loadUserData(user);
+                    if (currentPage !== 'main') {
+                        showMainApp();
+                    } else {
+                        updateUserUI();
+                        loadCourses(); // 確保用戶登入後課程權限更新
+                    }
+                } else {
+                    console.log("User is signed out");
+                    currentUser = null;
+                    updateUserUI();
+                    // 如果用戶在主應用頁面登出，則跳回選擇頁面
+                    if (currentPage === 'main') {
+                        showChoicePage();
+                    }
+                }
+            });
+        } else {
+            console.error("Firebase Auth service is not available. App functionality will be limited.");
+        }
+
+
+        // ========== 頁面切換功能 ==========
+        function showLandingPage() {
+            hideAllPages();
+            document.getElementById('landingPage').classList.remove('hidden');
+            currentPage = 'landing';
+        }
+
+        function showChoicePage() {
+            console.log("showChoicePage function was called!"); // 測試日誌
+            hideAllPages();
+            document.getElementById('choicePage').classList.remove('hidden');
+            currentPage = 'choice';
+        }
+
+        function showMainApp() {
+            hideAllPages();
+            document.getElementById('mainApp').classList.remove('hidden');
+            currentPage = 'main';
+            loadCourses();
+        }
+
+        function hideAllPages() {
+            document.getElementById('landingPage').classList.add('hidden');
+            document.getElementById('choicePage').classList.add('hidden');
+            document.getElementById('mainApp').classList.add('hidden');
+        }
+
+        // ========== 認證功能 ==========
+        function showAuthModal(mode = 'login') {
+            document.getElementById('authModal').classList.remove('hidden');
+            isLoginMode = (mode === 'login'); // 更新登入模式
+            updateAuthUI();
+        }
+
+        function closeAuthModal() {
+            document.getElementById('authModal').classList.add('hidden');
+            clearAuthForm();
+        }
+
+        function toggleAuthMode() {
+            isLoginMode = !isLoginMode;
+            updateAuthUI();
+        }
+
+        function updateAuthUI() {
+            const usernameGroup = document.getElementById('usernameGroup');
+            if (isLoginMode) {
+                document.getElementById('authTitle').textContent = '會員登入';
+                document.getElementById('authBtnText').textContent = '登入';
+                document.getElementById('authSwitchText').textContent = '還沒有帳號？立即註冊';
+                if(usernameGroup) usernameGroup.style.display = 'none';
+            } else {
+                document.getElementById('authTitle').textContent = '註冊新帳號';
+                document.getElementById('authBtnText').textContent = '註冊';
+                document.getElementById('authSwitchText').textContent = '已有帳號？立即登入';
+                if(usernameGroup) usernameGroup.style.display = 'block';
+            }
+            clearAuthForm();
+        }
+
+        function clearAuthForm() {
+            document.getElementById('email').value = '';
+            document.getElementById('username').value = '';
+            document.getElementById('password').value = '';
+            document.getElementById('errorMessage').textContent = '';
+            document.getElementById('successMessage').textContent = '';
+            document.getElementById('authLoading').classList.add('hidden');
+            document.getElementById('authBtnText').style.display = 'inline';
+        }
+
+        function showError(message) {
+            document.getElementById('errorMessage').textContent = message;
+            document.getElementById('successMessage').textContent = '';
+        }
+
+        function showSuccess(message) {
+            document.getElementById('successMessage').textContent = message;
+            document.getElementById('errorMessage').textContent = '';
+        }
+
+        // ========== 進入訪客模式 ==========
+        function enterAsGuest() {
+            currentUser = null; // 確保登出狀態
+            if (auth && auth.currentUser) { // 如果之前有登入用戶，先登出
+                auth.signOut().then(() => {
+                    updateUserUI();
+                    showMainApp();
+                }).catch(error => {
+                    console.error("Error signing out guest:", error);
+                    updateUserUI(); // 即使登出失敗也嘗試更新UI
+                    showMainApp();
+                });
+            } else {
+                updateUserUI();
+                showMainApp();
+            }
+        }
+
+        // ========== 處理認證按鈕點擊 ==========
+        function handleAuthButtonClick() {
+            if (currentUser) {
+                logout();
+            } else {
+                showAuthModal('login');
+            }
+        }
+
+        // ========== 處理登入/註冊 ==========
+        async function handleAuth() {
+            if (!auth || !db) {
+                showError("Firebase 服務未初始化，請稍後再試。");
+                return;
+            }
+
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value;
+            const username = document.getElementById('username').value.trim();
+
+            if (!email || !password) {
+                showError('請填寫電子郵件和密碼。');
+                return;
+            }
+            if (!isLoginMode && !username) {
+                showError('註冊時請填寫使用者名稱。');
+                return;
+            }
+
+            document.getElementById('authBtnText').style.display = 'none';
+            document.getElementById('authLoading').classList.remove('hidden');
+            showError(''); // 清除舊錯誤
+
+            try {
+                if (isLoginMode) {
+                    await auth.signInWithEmailAndPassword(email, password);
+                    showSuccess('登入成功！將跳轉至主頁面...');
+                    setTimeout(() => {
+                        closeAuthModal();
+                    }, 1500);
+                } else { // 註冊邏輯
+                    const userCredential = await auth.createUserWithEmailAndPassword(email, password);
+                    // **** 以下是修改點 ****
+                    await db.collection('users').doc(userCredential.user.uid).set({
+                        username: username,
+                        email: email,
+                        memberLevel: 0, // 確保新註冊用戶有預設的 memberLevel
+                        memberLevelName: '一般使用者', // 可選，用於描述
+                        joinDate: firebase.firestore.FieldValue.serverTimestamp()
+                    });
+                    // **** 修改點結束 ****
+                    showSuccess('註冊成功！將跳轉至主頁面...');
+                     setTimeout(() => {
+                        closeAuthModal();
+                    }, 1500);
+                }
+            } catch (error) {
+                console.error("Auth Error:", error.code, error.message);
+                showError(getErrorMessage(error.code));
+            } finally {
+                document.getElementById('authBtnText').style.display = 'inline';
+                document.getElementById('authLoading').classList.add('hidden');
+            }
+        }
+
+        // ========== Firebase 錯誤訊息轉換 ==========
+        function getErrorMessage(errorCode) {
+            switch (errorCode) {
+                case 'auth/invalid-email': return '電子郵件格式不正確。';
+                case 'auth/user-not-found': return '此電子郵件尚未註冊。';
+                case 'auth/wrong-password': return '密碼錯誤。';
+                case 'auth/email-already-in-use': return '此電子郵件已被註冊。';
+                case 'auth/weak-password': return '密碼強度不足，至少需要6個字元。';
+                case 'auth/requires-recent-login': return '此操作需要重新登入，請登出後再試。';
+                case 'auth/too-many-requests': return '請求次數過多，請稍後再試。';
+                case 'auth/api-key-not-valid': return 'Firebase API 金鑰無效，請檢查設定。'; // 新增這個
+                default: return `發生錯誤：${errorCode}`;
+            }
+        }
+
+        // ========== 載入使用者資料 ==========
+        async function loadUserData(user) {
+            if (!db) {
+                console.error("Firestore is not initialized. Cannot load user data.");
+                currentUser = { uid: user.uid, email: user.email, username: '讀取失敗', memberLevel: 0 }; // 提供基本信息，並預設 memberLevel
+                updateUserUI();
+                return;
+            }
+            try {
+                const doc = await db.collection('users').doc(user.uid).get();
+                if (doc.exists) {
+                    currentUser = {
+                        uid: user.uid,
+                        email: user.email,
+                        ...doc.data()
+                    };
+                    // 確保 currentUser 物件中有 memberLevel，如果 Firestore 中沒有，給個預設值
+                    if (typeof currentUser.memberLevel === 'undefined') {
+                        currentUser.memberLevel = 0;
+                        console.warn(`User ${user.uid} document in Firestore is missing memberLevel. Defaulting to 0.`);
+                    }
+                } else {
+                    console.warn("User document not found for UID in loadUserData:", user.uid, "This might happen if registration completed auth but failed to write to Firestore, or if user was deleted from Firestore but not Auth.");
+                    // 即使文檔不存在，也創建一個帶有預設 memberLevel 的 currentUser 物件
+                    // 這樣 onAuthStateChanged 後續的 loadCourses 至少有一個 memberLevel 可以參考
+                    // 但理想情況下，註冊時應該保證 users 文檔被創建
+                    currentUser = { uid: user.uid, email: user.email, username: user.email.split('@')[0], memberLevel: 0 };
+                }
+            } catch (error) {
+                console.error('載入使用者資料失敗：', error);
+                currentUser = { uid: user.uid, email: user.email, username: '讀取失敗', memberLevel: 0 };
+            }
+            updateUserUI();
+        }
+
+        // ========== 更新使用者介面 ==========
+        function updateUserUI() {
+            const userInfoSpan = document.getElementById('userInfo');
+            const authButton = document.getElementById('authButton');
+            if (currentUser) {
+                userInfoSpan.textContent = currentUser.username || currentUser.email;
+                authButton.textContent = '登出';
+            } else {
+                userInfoSpan.textContent = '訪客';
+                authButton.textContent = '登入';
+            }
+            if (currentPage === 'main') {
+                loadCourses();
+            }
+        }
+
+        // ========== 登出 ==========
+        async function logout() {
+            if (!auth) {
+                 console.error("Firebase Auth is not initialized. Cannot logout.");
+                 return;
+            }
+            try {
+                await auth.signOut();
+            } catch (error) {
+                console.error('登出失敗：', error);
+            }
+        }
+
+             // ========== 載入課程 ==========
+        async function loadCourses() {
+            if (!db) {
+                console.error("Firestore is not initialized. Cannot load courses.");
+                document.getElementById('loadingCourses').textContent = '服務錯誤，無法載入課程。';
+                return;
+            }
+            const loadingCoursesDiv = document.getElementById('loadingCourses');
+            const courseListUl = document.getElementById('courseList');
+
+            loadingCoursesDiv.style.display = 'block';
+            loadingCoursesDiv.textContent = '載入課程中...';
+            // courseListUl.innerHTML = ''; // 暫時註解，先看 snapshot
+
+            try {
+                console.log("Attempting to load ALL courses from Firestore (rules will allow if auth!=null or reqLevel=0)...");
+                const query = db.collection('courses').orderBy('order');
+
+                const snapshot = await query.get();
+                console.log(`Fetched ${snapshot.docs.length} courses.`);
+                
+                // **** 以下是新增的日誌 ****
+                console.log("Snapshot docs array:", snapshot.docs); 
+                
+                courses = []; // 初始化/清空 courses 陣列
+
+                snapshot.forEach(doc => {
+                    // **** 以下是新增的日誌 ****
+                    console.log("Inside forEach, doc ID:", doc.id); 
+                    
+                    const courseData = doc.data(); // 先獲取文檔數據
+                    console.log(`Processing course: "${courseData.title}", Firestore youtubeVideoId: "${courseData.youtubeVideoId}", All data:`, JSON.stringify(courseData));
+                    
+                    courses.push({
+                        id: doc.id,
+                        ...courseData // 使用解構賦值將所有數據加入
+                    });
+                });
+                
+                // 在確認 forEach 執行後，再取消註解下面的 courseListUl.innerHTML = ''; 和 displayCourses();
+                courseListUl.innerHTML = ''; // 清空舊列表
+                displayCourses(); // displayCourses 會根據用戶等級處理鎖定
+                loadingCoursesDiv.style.display = 'none';
+            } catch (error) {
+                console.error('載入課程失敗：', error);
+                let errorMsg = '載入課程失敗，請重新整理頁面。';
+                if (error.code === 'permission-denied' || (error.message && error.message.includes('permission'))) {
+                    errorMsg = '載入課程失敗：權限不足。請檢查 Firestore 安全規則以及用戶的會員等級。';
+                }
+                loadingCoursesDiv.textContent = errorMsg;
+            }
+        }
+
+               // ========== 載入課程 ==========
+        async function loadCourses() {
+            if (!db) {
+                console.error("Firestore is not initialized. Cannot load courses.");
+                document.getElementById('loadingCourses').textContent = '服務錯誤，無法載入課程。';
+                return;
+            }
+            const loadingCoursesDiv = document.getElementById('loadingCourses');
+            const courseListUl = document.getElementById('courseList');
+
+            loadingCoursesDiv.style.display = 'block';
+            loadingCoursesDiv.textContent = '載入課程中...';
+            // courseListUl.innerHTML = ''; // 為了調試forEach，暫時註解
+
+            try {
+                console.log("Attempting to load ALL courses from Firestore (rules will allow if auth!=null or reqLevel=0)...");
+                const query = db.collection('courses').orderBy('order');
+
+                const snapshot = await query.get();
+                console.log(`Fetched ${snapshot.docs.length} courses.`);
+                
+                console.log("Snapshot docs array:", snapshot.docs); 
+                
+                courses = []; 
+
+                snapshot.forEach(doc => {
+                    console.log("Inside forEach, doc ID:", doc.id); 
+                    const courseData = doc.data(); 
+                    console.log(`Processing course: "${courseData.title}", Firestore youtubeVideoId: "${courseData.youtubeVideoId}", All data:`, JSON.stringify(courseData));
+                    courses.push({
+                        id: doc.id,
+                        ...courseData 
+                    });
+                });
+                
+                courseListUl.innerHTML = ''; // 清空舊列表 (確認 forEach 執行後再放回來)
+                displayCourses(); 
+                loadingCoursesDiv.style.display = 'none';
+            } catch (error) {
+                console.error('載入課程失敗：', error);
+                let errorMsg = '載入課程失敗，請重新整理頁面。';
+                if (error.code === 'permission-denied' || (error.message && error.message.includes('permission'))) {
+                    errorMsg = '載入課程失敗：權限不足。請檢查 Firestore 安全規則以及用戶的會員等級。';
+                }
+                loadingCoursesDiv.textContent = errorMsg;
+            }
+        } // **** 確保 loadCourses 函數在這裡正確結束 ****
+
+        // ========== 顯示課程列表 ==========
+        function displayCourses() {
+            const courseListUl = document.getElementById('courseList');
+            courseListUl.innerHTML = '';
+
+            // 在這裡再次確認 currentUser 和 memberLevel
+            console.log("Displaying courses. Current user:", currentUser);
+            const userLevel = currentUser && typeof currentUser.memberLevel !== 'undefined' ? currentUser.memberLevel : 0;
+            console.log("User level for course display:", userLevel);
+
+
+            if (courses.length === 0) {
+                courseListUl.innerHTML = '<li style="color: #aaa; text-align: center; padding: 1rem 0;">暫無課程</li>';
+                return;
+            }
+
+            courses.forEach(course => {
+                const li = document.createElement('li');
+                li.className = 'course-item';
+                li.textContent = course.title;
+
+                // 確保 course.requiredLevel 是數字，如果不是，給個預設值
+                const requiredLevel = typeof course.requiredLevel === 'number' ? course.requiredLevel : 0;
+
+                if (requiredLevel > userLevel) {
+                    li.classList.add('locked');
+                    li.title = "需要更高會員等級或登入";
+                    li.onclick = () => {
+                        if (currentUser) {
+                            alert(`此課程「${course.title}」需要更高的會員等級才能觀看。`);
+                        } else {
+                            alert('請先登入以觀看進階課程。');
+                            showAuthModal('login');
+                        }
+                    };
+                } else {
+                    li.onclick = () => loadCourse(course);
+                }
+                courseListUl.appendChild(li);
+            });
+        }
+
+               // ========== 載入單一課程 ==========
+        function loadCourse(course) {
+            // **** 在函數開頭打印傳入的 course 物件，用於調試 ****
+            console.log(`loadCourse called for: "${course.title}". Full course object:`, JSON.stringify(course));
+
+            document.querySelectorAll('.course-item').forEach(item => {
+                item.classList.remove('active');
+                if (item.textContent === course.title) {
+                    item.classList.add('active');
+                }
+            });
+
+            document.getElementById('welcomeMessage').classList.add('hidden');
+            document.getElementById('courseContent').classList.remove('hidden');
+
+            document.getElementById('courseTitle').textContent = course.title;
+
+            const youtubePlayer = document.getElementById('youtubePlayer');
+            if (course.youtubeVideoId && course.youtubeVideoId.trim() !== "") {
+                const videoId = course.youtubeVideoId.split('&')[0];
+                youtubePlayer.src = `https://www.youtube.com/embed/${videoId}`;
+                console.log(`Setting YouTube player src for "${course.title}" to: ${youtubePlayer.src}`);
+            } else {
+                youtubePlayer.src = '';
+                // **** 修改日誌，包含課程標題 ****
+                console.log(`YouTube video ID is missing or empty for "${course.title}", clearing player src.`);
+            }
+            document.getElementById('courseDescription').textContent = course.description || '暫無課程描述。';
+        }
+
+        // 初始化
+        if (!auth) {
+            showLandingPage();
+        } else if (!auth.currentUser && currentPage !== 'landing' && currentPage !== 'choice') {
+             showLandingPage();
+        }
+    </script>
+</body>
+</html>
