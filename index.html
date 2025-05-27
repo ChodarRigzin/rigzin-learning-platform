@@ -18,1083 +18,1072 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft JhengHei", sans-serif;
-            background-color: #f5f5f5;
-            color: #333;
-        }
-
-        /* 共用樣式 */
-        .hidden {
-            display: none !important;
-        }
-
-        .page {
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        /* 首頁樣式 */
-        .landing-page {
-            background: linear-gradient(135deg, #8B6F47 0%, #D4A574 50%, #FFD700 100%);
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .landing-page::before {
-            content: "";
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
-            background-size: 50px 50px;
-            animation: moveBackground 20s linear infinite;
-        }
-
-        @keyframes moveBackground {
-            0% { transform: translate(0, 0); }
-            100% { transform: translate(50px, 50px); }
-        }
-
-        .landing-content {
-            position: relative;
-            z-index: 1;
-            animation: fadeInUp 1s ease-out;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .logo-container {
-            width: 200px;
-            height: 200px;
-            margin: 0 auto 2rem;
-            background: white;
-            border-radius: 50%;
-            padding: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            animation: float 3s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-
-        .logo-svg {
-            width: 100%;
-            height: 100%;
-        }
-
-        .site-title {
-            font-size: 3rem;
-            color: white;
-            font-weight: bold;
-            margin-bottom: 3rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-
-        .enter-btn {
-            background: white;
-            color: #8B6F47;
-            border: none;
-            padding: 1.25rem 3rem;
-            font-size: 1.25rem;
-            font-weight: bold;
-            border-radius: 50px;
-            cursor: pointer;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            transition: all 0.3s;
-        }
-
-        .enter-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
-            background: #FFD700;
-            color: #8B4513;
-        }
-
-        /* 選擇頁面樣式 */
-        .choice-page {
-            background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
-        }
-
-        .choice-container {
-            display: flex;
-            gap: 3rem;
-            flex-wrap: wrap;
-            justify-content: center;
-            animation: fadeIn 0.5s ease-out;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        .choice-card {
-            background: white;
-            padding: 3rem 2rem;
-            border-radius: 20px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            text-align: center;
-            transition: all 0.3s;
-            cursor: pointer;
-            width: 300px;
-        }
-
-        .choice-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-        }
-
-        .choice-icon {
-            font-size: 4rem;
-            margin-bottom: 1rem;
-        }
-
-        .choice-title {
-            font-size: 1.5rem;
-            color: #2c3e50;
-            margin-bottom: 1rem;
-        }
-
-        .choice-description {
-            color: #7f8c8d;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Helvetica Neue", "Microsoft JhengHei", "Jomolhari", "Microsoft Himalaya", "Kailash", sans-serif; /* 添加藏文字體 */
+    /* Jomolhari 是一個常用的開源藏文字體 */
+            background-color: #f8f9fa;
+            color: #343a40; /* 深灰色文字 */
+            overflow-x: hidden;
             line-height: 1.6;
         }
 
-        .back-btn {
-            position: fixed;
-            top: 2rem;
-            left: 2rem;
-            background: white;
-            color: #8B6F47;
-            border: none;
-            padding: 0.75rem 1.5rem;
-            border-radius: 50px;
-            cursor: pointer;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            transition: all 0.3s;
-            font-weight: bold;
-        }
+        .hidden { display: none !important; }
 
-        .back-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-        }
-
-        /* 主應用程式樣式 */
-        .main-app {
-            background: white;
-            width: 100%;
+        /* ========== 首頁新樣式 ========== */
+        .landing-page-container {
+            min-height: 100vh;
+            display: flex;
             flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            /* 替換為你的背景圖片 URL，或使用漸變 */
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1501785888041-af3ef285b470?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'); /* 示例圖片，請替換 */
+            background-size: cover;
+            background-position: center;
+            color: white; /* 文字顏色改為白色以適應深色背景 */
+            text-align: center;
+            padding: 2rem;
         }
 
-        .navbar {
-            width: 100%;
-            background: linear-gradient(135deg, #8B6F47 0%, #D4A574 100%);
+        .landing-content-wrapper {
+            max-width: 800px;
+            animation: fadeInScaleUp 1s ease-out forwards;
+        }
+
+        @keyframes fadeInScaleUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px) scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .landing-title {
+            font-size: 3rem; /* 根據需要調整 */
+            font-weight: 700; /* 加粗 */
+            margin-bottom: 1rem;
+            line-height: 1.2;
+            /* letter-spacing: 1px; */ /* 可選的字間距 */
+        }
+
+        .landing-subtitle {
+            font-size: 1.25rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .landing-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap; /* 在小屏幕上換行 */
+        }
+
+        .landing-btn {
+            padding: 0.9rem 2.2rem;
+            border-radius: 30px; /* 更圓潤的按鈕 */
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            border: 2px solid transparent; /* 為 secondary 按鈕準備邊框空間 */
+        }
+
+        .landing-btn.primary {
+            background-color: white;
+            color: #8A6D46; /* 深一點的棕金色 */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        .landing-btn.primary:hover {
+            background-color: #f8f0e3; /* 淺米色懸停 */
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .landing-btn.secondary {
+            background-color: transparent;
             color: white;
-            padding: 1rem 2rem;
+            border-color: white;
+        }
+        .landing-btn.secondary:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* --- 頂部導航欄樣式 (確保標題完整顯示) --- */
+        .top-nav {
+            background: #fff;
+            border-bottom: 1px solid #e0e0e0;
+            padding: 0 1.5rem; /* 稍微減少 padding */
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .logo-small {
-            width: 40px;
-            height: 40px;
-            background: white;
-            border-radius: 50%;
-            padding: 5px;
-        }
-
-        .nav-actions {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .nav-btn {
-            background-color: rgba(255, 255, 255, 0.2);
-            color: white;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            padding: 0.5rem 1rem;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: all 0.3s;
-            font-size: 0.875rem;
-        }
-
-        .nav-btn:hover {
-            background-color: rgba(255, 255, 255, 0.3);
-            transform: translateY(-1px);
-        }
-
-        .main-container {
-            display: flex;
-            flex: 1;
-            width: 100%;
-        }
-
-        .sidebar {
-            width: 300px;
-            background-color: #2c3e50;
-            color: white;
-            padding: 1.5rem;
-            overflow-y: auto;
-        }
-
-        .sidebar h2 {
-            margin-bottom: 1.5rem;
-            font-size: 1.25rem;
-        }
-
-        .course-list {
-            list-style: none;
-        }
-
-        .course-item {
-            padding: 1rem;
-            margin-bottom: 0.75rem;
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .course-item:hover {
-            background-color: rgba(255, 255, 255, 0.15);
-            transform: translateX(5px);
-        }
-
-        .course-item.active {
-            background-color: #D4A574;
-        }
-
-        .course-item.locked {
-            opacity: 0.6;
-            cursor: not-allowed;
-        }
-
-        .course-item.locked::after {
-            content: " 🔒";
-        }
-
-        .content-area {
-            flex: 1;
-            padding: 2rem;
-            background-color: white;
-        }
-
-        .welcome-message {
-            text-align: center;
-            padding: 3rem;
-            color: #7f8c8d;
-        }
-
-        .video-container {
-            position: relative;
-            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
-            height: 0;
-            overflow: hidden;
-            background-color: #000;
-            border-radius: 8px;
-            margin-bottom: 2rem;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-        }
-
-        .video-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-        }
-
-        .course-content {
-            margin-top: 2rem;
-        }
-
-        .course-content h3 {
-            margin-bottom: 1rem;
-            color: #2c3e50;
-        }
-
-        .course-content p {
-            line-height: 1.8;
-            color: #555;
-            white-space: pre-line;
-        }
-
-        /* 登入表單樣式 */
-        .auth-modal {
+            height: 60px;
             position: fixed;
             top: 0;
-            left: 0;
             width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.8);
+            z-index: 100;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .nav-left { display: flex; align-items: center; gap: 0.75rem; /* 調整 gap */ }
+        .logo { /* 用於主應用程式頂部導航 */
             display: flex;
-            justify-content: center;
             align-items: center;
-            z-index: 1000;
+            gap: 0.6rem; /* 調整logo圖示和文字間距 */
+            font-size: 1.1rem; /* 可適當調整 */
+            font-weight: 600;
+            color: #685335; /* 深一點的棕色，確保可讀性 */
+            text-decoration: none;
+            cursor: pointer;
+            white-space: nowrap; /* 防止標題換行 */
         }
-
-        .auth-form {
-            background: white;
-            padding: 2.5rem;
-            border-radius: 12px;
-            width: 400px;
-            max-width: 90%;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
-            position: relative; /* For close button positioning */
-        }
-
-        .auth-form h2 {
-            margin-bottom: 2rem;
-            text-align: center;
-            color: #2c3e50;
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            color: #555;
-            font-weight: 500;
-        }
-
-        .form-group input {
-            width: 100%;
-            padding: 0.75rem;
-            border: 2px solid #e9ecef;
-            border-radius: 6px;
-            font-size: 1rem;
-        }
-
-        .form-group input:focus {
-            outline: none;
-            border-color: #8B6F47;
-        }
-
-        .auth-btn {
-            width: 100%;
-            padding: 0.875rem;
-            background-color: #8B6F47;
+        .logo-icon { /* 用於主應用程式頂部導航 */
+            width: 30px; /* 稍微調整大小 */
+            height: 30px;
+            background: linear-gradient(135deg, #8B6F47, #B08D57); /* 調整漸變 */
+            border-radius: 6px; /* 改為圓角矩形 */
+            display: flex;
+            align-items: center;
+            justify-content: center;
             color: white;
-            border: none;
-            border-radius: 6px;
-            font-size: 1rem;
             font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s;
-            margin-bottom: 1rem;
-            display: flex; /* For loading spinner alignment */
-            justify-content: center;
-            align-items: center;
+            font-size: 0.9rem; /* 調整圖示內文字大小 */
+            flex-shrink: 0; /* 防止圖示被壓縮 */
         }
 
-        .auth-btn:hover {
-            background-color: #D4A574;
-        }
+        /* (保留你第二份程式碼中 .nav-links, .nav-right, .user-menu, .user-avatar 等樣式，
+           以及 .main-container, .course-sidebar, .content-area, .auth-modal 等主體樣式)
+           這裡省略了大量你之前已有的 CSS，只展示關鍵修改和新增部分
+        */
+        /* ... 這裡應該是你之前版本中 mainApp 相關的 CSS ... */
+        .main-container { margin-top: 60px; display: flex; height: calc(100vh - 60px); }
+        .course-sidebar { width: 300px; background: #fff; border-right: 1px solid #e0e0e0; overflow-y: auto; flex-shrink: 0; padding-bottom: 60px; }
+        .course-header { padding: 1.25rem; border-bottom: 1px solid #e0e0e0; }
+        .course-title-main { font-size: 1.1rem; font-weight: 600; color: #333; margin-bottom: 0.5rem; }
+         .chapter-list { padding: 0.5rem 0; }
+        .chapter { margin-bottom: 0.25rem; }
+        .chapter-title { padding: 0.75rem 1.5rem; font-size: 0.9rem; font-weight: 500; color: #555; background: #f8f9fa; cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: all 0.2s; border-top: 1px solid #eee; }
+        .chapter-title:first-child { border-top: none; }
+        .chapter-title:hover { background: #e9ecef; }
+        .chapter-icon { font-size: 0.75rem; transition: transform 0.2s; }
+        .chapter.expanded .chapter-icon { transform: rotate(90deg); }
+        .lesson-list { max-height: 0; overflow: hidden; transition: max-height 0.35s cubic-bezier(0.25, 0.1, 0.25, 1); background-color: #fff; }
+        .chapter.expanded .lesson-list { max-height: 1000px; }
+        .lesson { padding: 0.8rem 1rem 0.8rem 2.5rem; display: flex; align-items: center; gap: 0.75rem; cursor: pointer; transition: background 0.2s; position: relative; border-bottom: 1px solid #f0f0f0;}
+        .lesson:last-child { border-bottom: none; }
+        .lesson:hover { background: #f1f3f5; }
+        .lesson.active { background: #FFF3E0; color: #8B6F47; font-weight: 500; }
+        .lesson.active::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: #D4A574; border-top-right-radius: 2px; border-bottom-right-radius: 2px; }
+        .lesson-icon-wrapper { width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .lesson-icon { width: 18px; height: 18px; border-radius: 50%; border: 1.5px solid #ccc; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; color: #999; }
+        .lesson.locked .lesson-icon::after { content: "🔒"; font-size: 0.8em; color: #aaa; position: absolute; right: 1rem; top: 50%; transform: translateY(-50%); }
+        .lesson.locked { opacity: 0.6; cursor: not-allowed; background-image: repeating-linear-gradient(-45deg, transparent, transparent 4px, rgba(0,0,0,0.02) 4px, rgba(0,0,0,0.02) 8px); }
+        .lesson-info { flex: 1; }
+        .lesson-title { font-size: 0.875rem; color: #333; margin-bottom: 0.1rem; }
+        .lesson.active .lesson-title { color: #8B6F47; }
+        .lesson-duration { font-size: 0.75rem; color: #999; }
 
-        .auth-btn.secondary {
-            background-color: #6c757d;
-        }
+        /* 影片和內容區域 */
+        .content-area { flex: 1; background: #f0f2f5; overflow-y: auto; display: flex; flex-direction: column; }
+        .video-section { background: #000; position: relative; padding-bottom: 56.25%; overflow: hidden; width: 100%; flex-shrink: 0;}
+        .video-container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+        .video-container iframe { width: 100%; height: 100%; border: none; }
+        .content-section { background: #fff; margin: 1rem; border-radius: 8px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.05); flex-grow: 1; display: flex; flex-direction: column; }
+        .content-tabs { display: flex; border-bottom: 1px solid #e0e0e0; background: #fdfdfd; flex-shrink: 0; }
+        .content-tab { padding: 0.8rem 1.5rem; cursor: pointer; color: #666; font-size: 0.9rem; font-weight: 500; position: relative; transition: all 0.2s; }
+        .content-tab:hover { color: #333; }
+        .content-tab.active { color: #8B6F47; }
+        .content-tab.active::after { content: ''; position: absolute; bottom: -1px; left: 0; right: 0; height: 2px; background: #8B6F47; }
+        .tab-content-wrapper { overflow-y: auto; flex-grow: 1; }
+        .tab-content { padding: 1.5rem; display: none; }
+        .tab-content.active { display: block; }
+        #currentLessonTitle { font-size: 1.4rem; margin-bottom: 0.75rem; color: #333; font-weight: 600; } /* 調整課程標題大小 */
+        .tab-content h3 { font-size: 1.1rem; margin-bottom: 1rem; color: #333; }
+        .tab-content p, .tab-content div { line-height: 1.7; color: #555; margin-bottom: 1rem; font-size: 0.9rem; }
+        .bottom-controls { flex-shrink: 0; background: #fff; border-top: 1px solid #e0e0e0; padding: 0.75rem 1.5rem; display: flex; justify-content: space-between; align-items: center; }
+        .control-btn { padding: 0.6rem 1.2rem; border: 1px solid #e0e0e0; border-radius: 6px; background: #fff; color: #666; cursor: pointer; font-size: 0.875rem; transition: all 0.2s; display: flex; align-items: center; gap: 0.5rem;}
+        .control-btn:hover { background: #f8f9fa; border-color: #8B6F47; color: #8B6F47; }
+        .control-btn.primary { background: #8B6F47; color: white; border-color: #8B6F47; }
+        .control-btn.primary:hover { background: #7A5F3C; }
+        .control-btn:disabled { opacity: 0.5; cursor: not-allowed; }
 
-        .auth-btn.secondary:hover {
-            background-color: #5a6268;
-        }
 
-        .close-modal {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: #999;
-        }
+        /* 登入模態框 (與之前版本類似，可根據需要調整) */
+        .auth-modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); display: flex; justify-content: center; align-items: center; z-index: 1000; backdrop-filter: blur(3px); }
+        .auth-form { background: white; padding: 2.5rem; border-radius: 12px; width: 400px; max-width: 90%; box-shadow: 0 10px 30px rgba(0,0,0,0.15); position: relative; animation: zoomIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        @keyframes zoomIn { from { opacity:0; transform: scale(0.9); } to { opacity:1; transform: scale(1); } }
+        .auth-header { text-align: center; margin-bottom: 1.5rem; }
+        .auth-logo-modal { width: 50px; height: 50px; background: linear-gradient(135deg, #8B6F47, #D4A574); border-radius: 10px; margin: 0 auto 0.75rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2rem; font-weight: bold;}
+        #authFormTitle { font-size: 1.5rem; color: #333; font-weight: 600; }
+        .form-group { margin-bottom: 1.25rem; }
+        .form-label { display: block; margin-bottom: 0.4rem; color: #555; font-size: 0.875rem; font-weight: 500;}
+        .form-input { width: 100%; padding: 0.75rem 1rem; border: 1px solid #ccc; border-radius: 6px; font-size: 0.95rem; transition: all 0.2s; }
+        .form-input:focus { outline: none; border-color: #8B6F47; box-shadow: 0 0 0 2px rgba(139, 111, 71, 0.1); }
+        .auth-submit-btn { width: 100%; padding: 0.8rem; background: #8B6F47; color: white; border: none; border-radius: 6px; font-size: 0.95rem; font-weight: 600; cursor: pointer; transition: all 0.2s; display: flex; justify-content: center; align-items: center; gap: 0.5rem; }
+        .auth-submit-btn:hover { background: #7A5F3C; }
+        .auth-switch { text-align: center; margin-top: 1.25rem; color: #666; font-size: 0.875rem; }
+        .auth-switch a { color: #8B6F47; text-decoration: none; font-weight: 500; }
+        .auth-switch a:hover { text-decoration: underline; }
+        .close-modal-btn { position: absolute; top: 1rem; right: 1rem; width: 30px; height: 30px; border: none; background: #f0f0f0; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; color: #888; font-size: 1.1rem; transition: all 0.2s;}
+        .close-modal-btn:hover { background: #e0e0e0; color: #555; }
+        .error-message-modal { color: #dc3545; font-size: 0.8rem; margin-bottom: 1rem; text-align: center; min-height: 1em;}
+        .success-message-modal { color: #28a745; font-size: 0.8rem; margin-bottom: 1rem; text-align: center; min-height: 1em;}
+        .loading-spinner { display: inline-block; width: 18px; height: 18px; border: 2.5px solid #f3f3f3; border-top: 2.5px solid #8B6F47; border-radius: 50%; animation: spin 1s linear infinite; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
-        .error-message {
-            color: #dc3545;
-            font-size: 0.875rem;
-            margin-top: 0.5rem;
-            text-align: center;
-            min-height: 1.2em; /* Reserve space to prevent layout shift */
-        }
+        #welcomeContent { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; text-align: center; padding: 2rem; color: #777; }
+        #welcomeContent h1 { font-size: 1.8rem; margin-bottom: 0.75rem; color: #444; }
+        #welcomeContent p { font-size: 1rem; margin-bottom: 1.5rem; }
+        #welcomeContent img { max-width: 100%; width: 350px; height: auto; border-radius: 8px; opacity: 0.6; } /* 調整圖片大小和透明度 */
 
-        .success-message {
-            color: #28a745;
-            font-size: 0.875rem;
-            margin-top: 0.5rem;
-            text-align: center;
-            min-height: 1.2em; /* Reserve space */
-        }
+  /* 在 body 或一個通用選擇器中定義藏文字體 (如果系統沒有合適的，需要引入) */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Helvetica Neue", "Microsoft JhengHei", "Jomolhari", "Microsoft Himalaya", "Kailash", sans-serif; /* 添加藏文字體 */
+    /* Jomolhari 是一個常用的開源藏文字體 */
+}
 
-        .loading {
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            border: 3px solid #f3f3f3; /* Light grey */
-            border-top: 3px solid #8B6F47; /* Main color */
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin-left: 10px;
-        }
+/* 首頁多語言標題 */
+.landing-title-multilang {
+    margin-bottom: 1.5rem;
+    line-height: 1.3;
+}
+.landing-title-multilang div {
+    display: block; /* 每種語言一行 */
+}
+.lang-tibetan {
+    font-size: 2.2rem; /* 藏文可以稍微大一點或根據實際調整 */
+    font-family: "Jomolhari", "Microsoft Himalaya", "Kailash", serif; /* 指定藏文字體 */
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+     color: #FFD700; /* 金色藏文 */
+     text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+}
+.lang-chinese {
+    font-size: 2.8rem; /* 主標題中文 */
+    font-weight: 700;
+    margin-bottom: 0.3rem;
+     /* color: white; /* 已在 landing-page-container 設定 */
+}
+.lang-english {
+    font-size: 1.1rem;
+    font-weight: 400;
+    opacity: 0.85;
+    letter-spacing: 0.5px;
+}
 
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
+/* 主應用頂部導航多語言標題 */
+.logo-text-multilang {
+    display: flex;
+    flex-direction: column; /* 垂直排列 */
+    line-height: 1.1; /* 調整行高使文字更緊湊 */
+    align-items: flex-start; /* 左對齊 */
+}
+.logo-text-multilang span {
+    display: block;
+    white-space: nowrap; /* 防止換行 */
+    overflow: hidden;
+    text-overflow: ellipsis; /* 超出顯示省略號 */
+    max-width: 350px; /* 限制最大寬度，根據需要調整 */
+}
+.lang-tibetan-nav {
+    font-size: 0.75rem; /* 導航欄藏文小一點 */
+    font-family: "Jomolhari", "Microsoft Himalaya", "Kailash", serif;
+    color: #795548; /* 深一點的棕色 */
+    margin-bottom: 1px;
+}
+.lang-chinese-nav {
+    font-size: 0.95rem; /* 導航欄中文 */
+    font-weight: 600;
+    color: #5D4037; /* 主標題顏色 */
+}
+.lang-english-nav {
+    font-size: 0.65rem;
+    color: #A1887F; /* 淺一點的棕色 */
+    font-weight: 400;
+}
+.logo { /* 確保 logo 容器能容納多行文字 */
+    align-items: center; /* 垂直居中圖示和文字塊 */
+}
 
-        /* 響應式設計 */
-        @media (max-width: 768px) {
-            .site-title { font-size: 2rem; }
-            .choice-container { flex-direction: column; align-items: center; }
-            .main-container { flex-direction: column; }
-            .sidebar { width: 100%; }
-            .auth-form { width: 90%; padding: 2rem; }
-        }
-    </style>
+
+/* 用戶下拉選單樣式 */
+.user-menu-container {
+    position: relative; /* 為下拉選單定位 */
+}
+.user-menu {
+    /* ... 保留之前的樣式 ... */
+    padding-right: 0.8rem; /* 為箭頭留空間 */
+}
+.dropdown-arrow {
+    font-size: 0.7rem;
+    margin-left: 5px;
+    transition: transform 0.2s ease-in-out;
+}
+.user-menu-container.open .dropdown-arrow {
+    transform: rotate(180deg);
+}
+
+.user-dropdown {
+    position: absolute;
+    top: calc(100% + 8px); /* 在用戶選單下方，帶一點間距 */
+    right: 0;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    width: 220px; /* 下拉選單寬度 */
+    z-index: 110; /* 高於其他元素 */
+    overflow: hidden;
+    border: 1px solid #eee;
+    animation: fadeInDropdown 0.2s ease-out;
+}
+
+@keyframes fadeInDropdown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.dropdown-user-info {
+    padding: 1rem;
+    border-bottom: 1px solid #f0f0f0;
+}
+.dropdown-user-info strong {
+    display: block;
+    font-size: 0.95rem;
+    color: #333;
+    margin-bottom: 0.25rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.dropdown-user-info span {
+    font-size: 0.8rem;
+    color: #777;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.dropdown-item {
+    display: block;
+    padding: 0.75rem 1rem;
+    font-size: 0.9rem;
+    color: #555;
+    text-decoration: none;
+    transition: background-color 0.15s ease-in-out;
+}
+.dropdown-item:hover {
+    background-color: #f8f9fa;
+    color: #8B6F47;
+}
+.dropdown-item:not(:last-child) {
+    border-bottom: 1px solid #f5f5f5;
+}
+
+ </style>
 </head>
 <body>
     <!-- 首頁 -->
-    <div id="landingPage" class="page landing-page">
-        <div class="landing-content">
-            <div class="logo-container">
-                <svg class="logo-svg" viewBox="0 0 200 200">
-                    <circle cx="100" cy="100" r="90" fill="none" stroke="#D4A574" stroke-width="8"/>
-                    <polygon points="100,40 160,140 40,140" fill="none" stroke="#D4A574" stroke-width="6"/>
-                    <circle cx="100" cy="100" r="15" fill="#D4A574"/>
-                    <circle cx="70" cy="130" r="8" fill="#D4A574"/>
-                    <circle cx="130" cy="130" r="8" fill="#D4A574"/>
-                </svg>
-            </div>
-            <h1 class="site-title">噶陀仁珍千寶課程平台</h1>
-            <button class="enter-btn" onclick="showChoicePage()">進入學習</button>
-        </div>
-    </div>
+   <div id="landingPageContainer" class="landing-page-container">
+    <!-- 首頁的頂部導航可以保留，或者根據新設計調整/移除 -->
+    <!-- 例如，如果新首頁設計是全屏背景，頂部導航可能不需要或需要不同樣式 -->
+    <!-- 為了簡化，我先假設你希望首頁頂部是乾淨的，只有主要內容 -->
 
-    <!-- 選擇頁面 -->
-    <div id="choicePage" class="page choice-page hidden">
-        <button class="back-btn" onclick="showLandingPage()">← 返回首頁</button>
-        <div class="choice-container">
-            <div class="choice-card" onclick="enterAsGuest()">
-                <div class="choice-icon">👁️</div>
-                <h2 class="choice-title">一般使用</h2>
-                <p class="choice-description">無需登入即可觀看基礎課程內容，適合初次瞭解佛法的朋友</p>
-            </div>
-            <div class="choice-card" onclick="showAuthModal('login')">
-                <div class="choice-icon">🔐</div>
-                <h2 class="choice-title">會員登入</h2>
-                <p class="choice-description">登入後可觀看進階課程，包含四加行、生起次第、圓滿次第等深入教學</p>
-            </div>
+    <div class="landing-content-wrapper"> <!-- 這是新的內容容器 -->
+        <div class="landing-title-multilang">
+            <div class="lang-tibetan">༄༅། །ཀཿཐོག་རིག་འཛིན་ཆེན་པོའི་ཆོས་ཀྱི་སྟེགས་བུ།</div>
+            <div class="lang-chinese">噶陀仁珍千寶課程平台</div>
+            <div class="lang-english">Kathog Rigzin Chenpo Dharma Platform</div>
+        </div>
+        <p class="landing-subtitle">
+            探索佛陀的智慧，開啟內心的平靜與覺照。系統化課程，引領您逐步深入經藏。
+        </p>
+        <div class="landing-buttons"> <!-- 沿用之前的按鈕，但類名可能需要統一 -->
+            <button class="landing-btn primary" onclick="enterAsGuest()">
+                開始學習
+            </button>
+            <button class="landing-btn secondary" onclick="showAuthModal('login')">
+                會員登入 / 註冊
+            </button>
         </div>
     </div>
+</div>
 
     <!-- 主應用程式 -->
-    <div id="mainApp" class="page main-app hidden">
-        <nav class="navbar">
-            <div class="logo">
-                <div class="logo-small">
-                    <svg viewBox="0 0 200 200">
-                        <circle cx="100" cy="100" r="90" fill="none" stroke="#D4A574" stroke-width="8"/>
-                        <polygon points="100,40 160,140 40,140" fill="none" stroke="#D4A574" stroke-width="6"/>
-                        <circle cx="100" cy="100" r="15" fill="#D4A574"/>
-                    </svg>
-                </div>
-                噶陀仁珍千寶課程平台
+    <div id="mainApp" class="hidden">
+        <nav class="top-nav">
+    <div class="nav-left">
+        <div class="logo" onclick="confirmBackToHome()">
+            <div class="logo-icon">噶</div>
+            <div class="logo-text-multilang">
+                <span class="lang-tibetan-nav">ཀཿཐོག་རིག་འཛིན་ཆེན་པོའི་ཆོས་ཀྱི་སྟེགས་བུ།</span>
+                <span class="lang-chinese-nav">噶陀仁珍千寶課程平台</span>
+                <span class="lang-english-nav">Kathok Rigzin Chenpo Dharma Platform</span>
             </div>
-            <div class="nav-actions">
-                <span id="userInfo" style="margin-right: 1rem;">訪客</span>
-                <button id="authButton" class="nav-btn" onclick="handleAuthButtonClick()">登入</button>
-                <button class="nav-btn" onclick="showChoicePage()">返回選單</button>
+        </div>
+    </div>
+    <div class="nav-right">
+        <div class="user-menu-container"> <!-- 新增容器 -->
+            <div class="user-menu" onclick="toggleUserDropdown()"> <!-- 修改 onclick -->
+                <div class="user-avatar" id="userAvatar">訪</div>
+                <span id="userName">訪客</span>
+                <span class="dropdown-arrow" id="dropdownArrow">▼</span> <!-- 修改箭頭 -->
             </div>
-        </nav>
+           <div class="user-dropdown hidden" id="userDropdownMenu">
+               <div class="dropdown-user-info">
+                 <strong id="dropdownUserName">訪客</strong> <!-- JS 會更新這裡 -->
+                 <span id="dropdownUserEmail"></span>   <!-- JS 會更新這裡 -->
+        </div>
+    <!-- .dropdown-item 將由 JavaScript 動態添加 -->
+            </div>
+        </div>
+    </div>
+</nav>
 
+        <!-- (主應用程式的 main-container, course-sidebar, content-area, authModal 等 HTML 結構保持不變) -->
+        <!-- ... 這裡應該是你之前版本中 mainApp 的完整 HTML 結構 ... -->
         <div class="main-container">
-            <aside class="sidebar">
-                <h2>📚 課程選單</h2>
-                <div id="loadingCourses" style="text-align: center; color: white; padding: 2rem;">
-                    載入課程中...
+            <aside class="course-sidebar" id="courseSidebar">
+                <div class="course-header">
+                    <h2 class="course-title-main">課程大綱</h2>
                 </div>
-                <ul class="course-list" id="courseList">
-                    <!-- 課程將從 Firebase 動態載入 -->
-                </ul>
+                <div id="loadingCoursesMessage" style="text-align: center; color: #777; padding: 2rem;">載入課程中...</div>
+                <div class="chapter-list" id="chapterList">
+                    <!-- 章節和課程將動態載入 -->
+                </div>
             </aside>
 
             <main class="content-area">
-                <div id="welcomeMessage" class="welcome-message">
-                    <h1>歡迎來到噶陀仁珍千寶課程平台</h1>
-                    <p>請從左側選單選擇您想學習的課程</p>
+                <div id="welcomeContent"> <!-- 確保這個 div 存在 -->
+                    <h1>歡迎來到課程學習平台</h1>
+                    <p>請從左側選擇一個課程開始學習。</p>
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%23e9ecef'/%3E%3Ctext x='200' y='140' font-family='Arial, sans-serif' font-size='24' fill='%23adb5bd' text-anchor='middle'%3E選擇課程以開始%3C/text%3E%3Cpath d='M150 200 L180 170 L220 210 L280 150' stroke='%23adb5bd' stroke-width='3' fill='none'/%3E%3Ccircle cx='100' cy='100' r='20' fill='%23ced4da'/%3E%3Crect x='280' y='80' width='40' height='40' rx='5' fill='%23ced4da'/%3E%3C/svg%3E" alt="課程預覽圖示">
                 </div>
 
-                <div id="courseContent" class="hidden">
-                    <h1 id="courseTitle"></h1>
-                    <div class="video-container">
-                        <iframe id="youtubePlayer"
-                                src=""
-                                frameborder="0"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                allowfullscreen>
-                        </iframe>
+                <div id="courseDisplayArea" class="hidden">
+                    <div class="video-section">
+                        <div class="video-container">
+                            <iframe id="youtubePlayer" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
                     </div>
-                    <div class="course-content">
-                        <h3>課程內容</h3>
-                        <p id="courseDescription"></p>
+                    <div class="content-section">
+                        <div class="content-tabs">
+                            <div class="content-tab active" onclick="switchTab(event, 'overviewTab')">課程概覽</div>
+                            <div class="content-tab" onclick="switchTab(event, 'transcriptTab')">課程講義</div>
+                        </div>
+                        <div class="tab-content-wrapper">
+                            <div id="overviewTab" class="tab-content active">
+                                <h3 id="currentLessonTitle">課程標題</h3>
+                                <p id="currentLessonDescription">課程描述將顯示於此。</p>
+                            </div>
+                            <div id="transcriptTab" class="tab-content">
+                                <h3>課程講義</h3>
+                                <div id="transcriptContent"><p>講義內容將顯示於此。</p></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bottom-controls">
+                        <button id="prevLessonBtn" class="control-btn" onclick="previousLesson()" disabled>← 上一課</button>
+                        <button id="nextLessonBtn" class="control-btn primary" onclick="nextLesson()" disabled>下一課 →</button>
                     </div>
                 </div>
             </main>
         </div>
     </div>
 
+
     <!-- 登入/註冊彈窗 -->
     <div id="authModal" class="auth-modal hidden">
         <div class="auth-form">
-            <button class="close-modal" onclick="closeAuthModal()">✕</button>
-            <h2 id="authTitle">會員登入</h2>
-
+            <button class="close-modal-btn" onclick="closeAuthModal()">✕</button>
+            <div class="auth-header">
+                <div class="auth-logo-modal">噶</div>
+                <h2 id="authFormTitle">會員登入</h2>
+            </div>
             <div class="form-group">
-                <label for="email">電子郵件</label>
-                <input type="email" id="email" placeholder="請輸入電子郵件" required>
+                <label class="form-label" for="emailInput">電子郵件</label>
+                <input type="email" id="emailInput" class="form-input" placeholder="請輸入電子郵件" required>
             </div>
-
-            <div class="form-group" id="usernameGroup" style="display: none;">
-                <label for="username">使用者名稱</label>
-                <input type="text" id="username" placeholder="請輸入使用者名稱">
+            <div class="form-group" id="usernameFormGroup" style="display: none;">
+                <label class="form-label" for="usernameInput">使用者名稱</label>
+                <input type="text" id="usernameInput" class="form-input" placeholder="請輸入使用者名稱 (至少3字元)">
             </div>
-
             <div class="form-group">
-                <label for="password">密碼</label>
-                <input type="password" id="password" placeholder="請輸入密碼" required>
+                <label class="form-label" for="passwordInput">密碼</label>
+                <input type="password" id="passwordInput" class="form-input" placeholder="請輸入密碼 (至少6字元)" required>
             </div>
-
-            <div id="errorMessage" class="error-message"></div>
-            <div id="successMessage" class="success-message"></div>
-
-            <button id="authSubmitBtn" class="auth-btn" onclick="handleAuth()">
-                <span id="authBtnText">登入</span>
-                <span id="authLoading" class="loading hidden"></span>
+            <div id="authErrorMessage" class="error-message-modal"></div>
+            <div id="authSuccessMessage" class="success-message-modal"></div>
+            <button id="authSubmitButton" class="auth-submit-btn" onclick="handleAuth()">
+                <span id="authSubmitButtonText">登入</span>
+                <span id="authLoadingSpinner" class="loading-spinner hidden"></span>
             </button>
-
-            <button id="authSwitchBtn" class="auth-btn secondary" onclick="toggleAuthMode()">
-                <span id="authSwitchText">還沒有帳號？立即註冊</span>
-            </button>
+            <div class="auth-switch">
+                <span id="authSwitchPromptText">還沒有帳號？</span>
+                <a href="#" onclick="event.preventDefault(); toggleAuthMode();" id="authSwitchLinkText">立即註冊</a>
+            </div>
         </div>
     </div>
 
+
     <script>
-        // ========== Firebase 設定 ==========
-        // 這是您的 Firebase 專案設定 -- 請務必確認這是您自己的正確設定！
-       // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        // ========== Firebase 設定 (硬編碼) ==========
         const firebaseConfig = {
-            apiKey: "REMOVED_FIREBASE_API_KEY", // 請替換成你自己的真實 API Key
-            authDomain: "REMOVED_FIREBASE_AUTH_DOMAIN", // 請替換成你自己的
-            projectId: "REMOVED_FIREBASE_PROJECT_ID", // 請替換成你自己的
-            storageBucket: "REMOVED_FIREBASE_PROJECT_ID.appspot.com", // 請替換成你自己的 (注意可能是 .firebasestorage.app)
-            messagingSenderId: "REMOVED_FIREBASE_MESSAGING_SENDER_ID", // 請替換成你自己的
-            appId: "1:REMOVED_FIREBASE_MESSAGING_SENDER_ID:web:7eba5e9ab7378ad19c59b0", // 請替換成你自己的
-            measurementId: "REMOVED_FIREBASE_MEASUREMENT_ID" // 請替換成你自己的
+            apiKey: "AIzaSyDaupI9H72MGccVro4HUbsVhcXwSqYZeuU", // 請替換成你的 API Key
+            authDomain: "kathok-learning-platform.firebaseapp.com",
+            projectId: "kathok-learning-platform",
+            storageBucket: "kathok-learning-platform.appspot.com",
+            messagingSenderId: "288334034961",
+            appId: "1:288334034961:web:7eba5e9ab7378ad19c59b0",
+            // measurementId: "G-LRV77EC50T" // 如果有用到，取消註解
         };
+
         let auth;
         let db;
 
-        // 初始化 Firebase
         try {
             firebase.initializeApp(firebaseConfig);
-            console.log("Firebase App initialized successfully:", firebase.app()); // 驗證點
             auth = firebase.auth();
             db = firebase.firestore();
-            console.log("Auth and Firestore services initialized."); // 驗證點
+            console.log("Firebase initialized successfully.");
         } catch (e) {
             console.error("CRITICAL ERROR initializing Firebase:", e);
+            alert("系統初始化失敗，請檢查網路連線或稍後再試。");
         }
-
-        // 在所有 Firebase 初始化之後，但在第一個函數定義之前，加入這個：
-        console.log("Script execution reached before function definitions.");
-
 
         // ========== 全域變數 ==========
         let currentUser = null;
         let currentPage = 'landing';
         let isLoginMode = true;
-        let courses = [];
+        let coursesData = [];
+        let currentSelectedCourseIndex = -1;
 
-        // ========== Firebase Auth 狀態監聽 ==========
-        if (auth) { // 確保 auth 已初始化
-            auth.onAuthStateChanged(async (user) => {
-                if (user) {
-                    console.log("User is signed in:", user.uid);
-                    await loadUserData(user);
-                    if (currentPage !== 'main') {
-                        showMainApp();
-                    } else {
-                        updateUserUI();
-                        loadCourses(); // 確保用戶登入後課程權限更新
-                    }
-                } else {
-                    console.log("User is signed out");
-                    currentUser = null;
-                    updateUserUI();
-                    // 如果用戶在主應用頁面登出，則跳回選擇頁面
-                    if (currentPage === 'main') {
-                        showChoicePage();
-                    }
-                }
-            });
-        } else {
-            console.error("Firebase Auth service is not available. App functionality will be limited.");
+        // DOM Elements
+        const landingPageEl = document.getElementById('landingPageContainer');
+        const mainAppEl = document.getElementById('mainApp');
+        const authModalEl = document.getElementById('authModal');
+        // ... (其他你可能想快取的元素)
+
+        // ========== 初始頁面顯示 ==========
+        function initializeAppDisplay() {
+            if (auth && auth.currentUser) {
+                // onAuthStateChanged 會處理後續邏輯
+            } else {
+                showLandingPage();
+            }
         }
 
-
-        // ========== 頁面切換功能 ==========
+        // ========== 頁面切換邏輯 ==========
         function showLandingPage() {
-            hideAllPages();
-            document.getElementById('landingPage').classList.remove('hidden');
+            landingPageEl.classList.remove('hidden');
+            mainAppEl.classList.add('hidden');
             currentPage = 'landing';
         }
 
-        function showChoicePage() {
-            console.log("showChoicePage function was called!"); // 測試日誌
-            hideAllPages();
-            document.getElementById('choicePage').classList.remove('hidden');
-            currentPage = 'choice';
-        }
-
         function showMainApp() {
-            hideAllPages();
-            document.getElementById('mainApp').classList.remove('hidden');
+            landingPageEl.classList.add('hidden');
+            mainAppEl.classList.remove('hidden');
             currentPage = 'main';
-            loadCourses();
+            if (coursesData.length === 0) {
+                loadCourses();
+            } else {
+                displayCourses();
+            }
+            if (currentSelectedCourseIndex === -1 && document.getElementById('welcomeContent')) {
+                document.getElementById('welcomeContent').classList.remove('hidden');
+                if(document.getElementById('courseDisplayArea')) document.getElementById('courseDisplayArea').classList.add('hidden');
+            }
         }
 
-        function hideAllPages() {
-            document.getElementById('landingPage').classList.add('hidden');
-            document.getElementById('choicePage').classList.add('hidden');
-            document.getElementById('mainApp').classList.add('hidden');
+        function confirmBackToHome() {
+            if (currentPage === 'main') {
+                if (confirm('確定要返回首頁嗎？')) {
+                    currentSelectedCourseIndex = -1; // 重置選中課程
+                    showLandingPage();
+                }
+            } else {
+                showLandingPage();
+            }
         }
+        // ... (保留你之前的 JavaScript 核心邏輯: Auth, Firestore, 課程顯示等) ...
+        // 我會確保 auth, loadCourses, displayCourses, loadSingleCourse 等函數能配合新的UI
+        // 注意：需要調整 updateUserUI 為 updateUserNavUI 以更新新的頂部導航欄
 
-        // ========== 認證功能 ==========
+        // ========== 認證 (Auth) 相關 ==========
         function showAuthModal(mode = 'login') {
-            document.getElementById('authModal').classList.remove('hidden');
-            isLoginMode = (mode === 'login'); // 更新登入模式
-            updateAuthUI();
+            isLoginMode = (mode === 'login');
+            updateAuthModalUI();
+            authModalEl.classList.remove('hidden');
         }
 
         function closeAuthModal() {
-            document.getElementById('authModal').classList.add('hidden');
+            authModalEl.classList.add('hidden');
             clearAuthForm();
         }
 
         function toggleAuthMode() {
             isLoginMode = !isLoginMode;
-            updateAuthUI();
+            updateAuthModalUI();
         }
 
-        function updateAuthUI() {
-            const usernameGroup = document.getElementById('usernameGroup');
+        function updateAuthModalUI() {
+            const titleEl = document.getElementById('authFormTitle');
+            const submitBtnTextEl = document.getElementById('authSubmitButtonText');
+            const switchPromptEl = document.getElementById('authSwitchPromptText');
+            const switchLinkEl = document.getElementById('authSwitchLinkText');
+            const usernameGroupEl = document.getElementById('usernameFormGroup');
+
             if (isLoginMode) {
-                document.getElementById('authTitle').textContent = '會員登入';
-                document.getElementById('authBtnText').textContent = '登入';
-                document.getElementById('authSwitchText').textContent = '還沒有帳號？立即註冊';
-                if(usernameGroup) usernameGroup.style.display = 'none';
+                titleEl.textContent = '會員登入';
+                submitBtnTextEl.textContent = '登入';
+                switchPromptEl.textContent = '還沒有帳號？';
+                switchLinkEl.textContent = '立即註冊';
+                usernameGroupEl.style.display = 'none';
             } else {
-                document.getElementById('authTitle').textContent = '註冊新帳號';
-                document.getElementById('authBtnText').textContent = '註冊';
-                document.getElementById('authSwitchText').textContent = '已有帳號？立即登入';
-                if(usernameGroup) usernameGroup.style.display = 'block';
+                titleEl.textContent = '註冊新帳號';
+                submitBtnTextEl.textContent = '註冊';
+                switchPromptEl.textContent = '已有帳號？';
+                switchLinkEl.textContent = '立即登入';
+                usernameGroupEl.style.display = 'block';
             }
             clearAuthForm();
         }
 
         function clearAuthForm() {
-            document.getElementById('email').value = '';
-            document.getElementById('username').value = '';
-            document.getElementById('password').value = '';
-            document.getElementById('errorMessage').textContent = '';
-            document.getElementById('successMessage').textContent = '';
-            document.getElementById('authLoading').classList.add('hidden');
-            document.getElementById('authBtnText').style.display = 'inline';
+            document.getElementById('emailInput').value = '';
+            document.getElementById('usernameInput').value = '';
+            document.getElementById('passwordInput').value = '';
+            document.getElementById('authErrorMessage').textContent = '';
+            document.getElementById('authSuccessMessage').textContent = '';
+            document.getElementById('authSubmitButtonText').style.display = 'inline';
+            document.getElementById('authLoadingSpinner').classList.add('hidden');
         }
 
-        function showError(message) {
-            document.getElementById('errorMessage').textContent = message;
-            document.getElementById('successMessage').textContent = '';
+        function setAuthError(message) {
+            document.getElementById('authErrorMessage').textContent = message;
+            document.getElementById('authSuccessMessage').textContent = '';
         }
 
-        function showSuccess(message) {
-            document.getElementById('successMessage').textContent = message;
-            document.getElementById('errorMessage').textContent = '';
+        function setAuthSuccess(message) {
+            document.getElementById('authSuccessMessage').textContent = message;
+            document.getElementById('authErrorMessage').textContent = '';
         }
 
-        // ========== 進入訪客模式 ==========
-        function enterAsGuest() {
-            currentUser = null; // 確保登出狀態
-            if (auth && auth.currentUser) { // 如果之前有登入用戶，先登出
-                auth.signOut().then(() => {
-                    updateUserUI();
-                    showMainApp();
-                }).catch(error => {
-                    console.error("Error signing out guest:", error);
-                    updateUserUI(); // 即使登出失敗也嘗試更新UI
-                    showMainApp();
-                });
-            } else {
-                updateUserUI();
-                showMainApp();
-            }
-        }
-
-        // ========== 處理認證按鈕點擊 ==========
-        function handleAuthButtonClick() {
-            if (currentUser) {
-                logout();
-            } else {
-                showAuthModal('login');
-            }
-        }
-
-        // ========== 處理登入/註冊 ==========
         async function handleAuth() {
             if (!auth || !db) {
-                showError("Firebase 服務未初始化，請稍後再試。");
+                setAuthError("系統錯誤，請稍後再試。");
                 return;
             }
 
-            const email = document.getElementById('email').value.trim();
-            const password = document.getElementById('password').value;
-            const username = document.getElementById('username').value.trim();
+            const email = document.getElementById('emailInput').value.trim();
+            const password = document.getElementById('passwordInput').value;
+            const username = document.getElementById('usernameInput').value.trim();
 
             if (!email || !password) {
-                showError('請填寫電子郵件和密碼。');
+                setAuthError('請填寫電子郵件和密碼。');
                 return;
             }
             if (!isLoginMode && !username) {
-                showError('註冊時請填寫使用者名稱。');
+                setAuthError('註冊時請填寫使用者名稱。');
+                return;
+            }
+             if (!isLoginMode && username.length < 3) {
+                setAuthError('使用者名稱至少需要3個字元。');
+                return;
+            }
+            if (password.length < 6) {
+                setAuthError('密碼至少需要6個字元。');
                 return;
             }
 
-            document.getElementById('authBtnText').style.display = 'none';
-            document.getElementById('authLoading').classList.remove('hidden');
-            showError(''); // 清除舊錯誤
+
+            document.getElementById('authSubmitButtonText').style.display = 'none';
+            document.getElementById('authLoadingSpinner').classList.remove('hidden');
+            setAuthError('');
 
             try {
                 if (isLoginMode) {
                     await auth.signInWithEmailAndPassword(email, password);
-                    showSuccess('登入成功！將跳轉至主頁面...');
-                    setTimeout(() => {
-                        closeAuthModal();
-                    }, 1500);
-                } else { // 註冊邏輯
+                    setAuthSuccess('登入成功！');
+                } else {
                     const userCredential = await auth.createUserWithEmailAndPassword(email, password);
-                    // **** 以下是修改點 ****
                     await db.collection('users').doc(userCredential.user.uid).set({
                         username: username,
                         email: email,
-                        memberLevel: 0, // 確保新註冊用戶有預設的 memberLevel
-                        memberLevelName: '一般使用者', // 可選，用於描述
+                        memberLevel: 0,
+                        memberLevelName: '一般會員',
                         joinDate: firebase.firestore.FieldValue.serverTimestamp()
                     });
-                    // **** 修改點結束 ****
-                    showSuccess('註冊成功！將跳轉至主頁面...');
-                     setTimeout(() => {
-                        closeAuthModal();
-                    }, 1500);
+                    setAuthSuccess('註冊成功！');
                 }
+                setTimeout(() => {
+                    closeAuthModal();
+                    // onAuthStateChanged 會處理 showMainApp
+                }, 1200);
+
             } catch (error) {
                 console.error("Auth Error:", error.code, error.message);
-                showError(getErrorMessage(error.code));
+                setAuthError(getFirebaseErrorMessage(error.code));
             } finally {
-                document.getElementById('authBtnText').style.display = 'inline';
-                document.getElementById('authLoading').classList.add('hidden');
+                document.getElementById('authSubmitButtonText').style.display = 'inline';
+                document.getElementById('authLoadingSpinner').classList.add('hidden');
             }
         }
 
-        // ========== Firebase 錯誤訊息轉換 ==========
-        function getErrorMessage(errorCode) {
+        function getFirebaseErrorMessage(errorCode) {
             switch (errorCode) {
                 case 'auth/invalid-email': return '電子郵件格式不正確。';
+                case 'auth/user-disabled': return '此帳號已被停用。';
                 case 'auth/user-not-found': return '此電子郵件尚未註冊。';
                 case 'auth/wrong-password': return '密碼錯誤。';
                 case 'auth/email-already-in-use': return '此電子郵件已被註冊。';
-                case 'auth/weak-password': return '密碼強度不足，至少需要6個字元。';
-                case 'auth/requires-recent-login': return '此操作需要重新登入，請登出後再試。';
-                case 'auth/too-many-requests': return '請求次數過多，請稍後再試。';
-                case 'auth/api-key-not-valid': return 'Firebase API 金鑰無效，請檢查設定。'; // 新增這個
-                default: return `發生錯誤：${errorCode}`;
+                case 'auth/weak-password': return '密碼強度不足 (至少6個字元)。';
+                case 'auth/requires-recent-login': return '此操作需要重新登入。';
+                case 'auth/too-many-requests': return '請求頻繁，請稍後再試。';
+                case 'auth/network-request-failed': return '網路連線失敗。';
+                default: return `發生錯誤 (${errorCode})。`;
             }
         }
 
-        // ========== 載入使用者資料 ==========
-        async function loadUserData(user) {
-            if (!db) {
-                console.error("Firestore is not initialized. Cannot load user data.");
-                currentUser = { uid: user.uid, email: user.email, username: '讀取失敗', memberLevel: 0 }; // 提供基本信息，並預設 memberLevel
-                updateUserUI();
-                return;
-            }
+        async function loadUserData(firebaseUser) {
+            if (!db) return;
             try {
-                const doc = await db.collection('users').doc(user.uid).get();
+                const userDocRef = db.collection('users').doc(firebaseUser.uid);
+                const doc = await userDocRef.get();
                 if (doc.exists) {
+                    currentUser = { uid: firebaseUser.uid, email: firebaseUser.email, ...doc.data() };
+                    if (typeof currentUser.memberLevel === 'undefined') currentUser.memberLevel = 0;
+                } else {
+                    console.warn(`User document for ${firebaseUser.uid} not found. Creating one with default values.`);
+                    const defaultUsername = firebaseUser.email.split('@')[0];
                     currentUser = {
-                        uid: user.uid,
-                        email: user.email,
-                        ...doc.data()
+                        uid: firebaseUser.uid,
+                        email: firebaseUser.email,
+                        username: defaultUsername,
+                        memberLevel: 0,
+                        memberLevelName: '一般會員'
                     };
-                    // 確保 currentUser 物件中有 memberLevel，如果 Firestore 中沒有，給個預設值
-                    if (typeof currentUser.memberLevel === 'undefined') {
-                        currentUser.memberLevel = 0;
-                        console.warn(`User ${user.uid} document in Firestore is missing memberLevel. Defaulting to 0.`);
+                    // 考慮是否要自動在 Firestore 中創建文檔
+                    // await userDocRef.set({ username: defaultUsername, email: firebaseUser.email, memberLevel: 0, joinDate: firebase.firestore.FieldValue.serverTimestamp() });
+                }
+            } catch (error) {
+                console.error("Error loading user data:", error);
+                currentUser = { uid: firebaseUser.uid, email: firebaseUser.email, username: '載入失敗', memberLevel: 0 };
+            }
+            updateUserNavUI(); // 更新頂部導航欄
+        }
+
+     function updateUserNavUI() {
+    const userNameEl = document.getElementById('userName');
+    const userAvatarEl = document.getElementById('userAvatar');
+    const dropdownUserNameEl = document.getElementById('dropdownUserName');
+    const dropdownUserEmailEl = document.getElementById('dropdownUserEmail');
+    const userDropdownMenuEl = document.getElementById('userDropdownMenu'); // 獲取下拉選單元素
+
+    if (!userDropdownMenuEl) {
+        console.error("userDropdownMenu element not found in updateUserNavUI");
+        return;
+    }
+
+    // 先清空現有的下拉選單項目 (除了用戶資訊部分)
+    const existingItems = userDropdownMenuEl.querySelectorAll('.dropdown-item');
+    existingItems.forEach(item => item.remove());
+
+    if (currentUser) {
+        const displayName = currentUser.username || currentUser.email.split('@')[0];
+        userNameEl.textContent = displayName;
+        userAvatarEl.textContent = displayName.charAt(0).toUpperCase();
+        if(dropdownUserNameEl) dropdownUserNameEl.textContent = displayName;
+        if(dropdownUserEmailEl) dropdownUserEmailEl.textContent = currentUser.email;
+
+        // 添加會員下拉項目
+        const switchToGuestItem = document.createElement('a');
+        switchToGuestItem.href = "#";
+        switchToGuestItem.className = 'dropdown-item';
+        switchToGuestItem.textContent = '切換為訪客模式';
+        switchToGuestItem.onclick = function(event) { event.preventDefault(); switchToGuestMode(); };
+        userDropdownMenuEl.appendChild(switchToGuestItem);
+
+        const logoutItem = document.createElement('a');
+        logoutItem.href = "#";
+        logoutItem.className = 'dropdown-item';
+        logoutItem.textContent = '登出';
+        logoutItem.onclick = function(event) { event.preventDefault(); logoutUser(); };
+        userDropdownMenuEl.appendChild(logoutItem);
+
+    } else {
+        userNameEl.textContent = '訪客';
+        userAvatarEl.textContent = '訪';
+        if(dropdownUserNameEl) dropdownUserNameEl.textContent = '訪客';
+        if(dropdownUserEmailEl) dropdownUserEmailEl.textContent = '尚未登入';
+
+        // 添加訪客下拉項目
+        const loginRegisterItem = document.createElement('a');
+        loginRegisterItem.href = "#";
+        loginRegisterItem.className = 'dropdown-item';
+        loginRegisterItem.textContent = '登入 / 註冊';
+        loginRegisterItem.onclick = function(event) {
+            event.preventDefault();
+            toggleUserDropdown(); // 先關閉下拉選單
+            showAuthModal('login'); // 然後打開登入模態框
+        };
+        userDropdownMenuEl.appendChild(loginRegisterItem);
+    }
+}
+
+        function enterAsGuest() {
+            if (auth && auth.currentUser) {
+                auth.signOut().then(() => {
+                    currentUser = null; // 確保 currentUser 被清空
+                    updateUserNavUI();
+                    showMainApp();
+                });
+            } else {
+                currentUser = null;
+                updateUserNavUI();
+                showMainApp();
+            }
+        }
+
+        async function loadCourses() {
+            if (!db) return;
+            const loadingMsgEl = document.getElementById('loadingCoursesMessage');
+            loadingMsgEl.style.display = 'block';
+            loadingMsgEl.textContent = '載入課程中...';
+            document.getElementById('chapterList').innerHTML = '';
+
+            try {
+                const snapshot = await db.collection('courses').orderBy('order', 'asc').get(); // 確保有 'order' 欄位
+                coursesData = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+                displayCourses();
+                loadingMsgEl.style.display = 'none';
+            } catch (error) {
+                console.error("Error loading courses:", error);
+                loadingMsgEl.textContent = '載入課程失敗。';
+            }
+        }
+
+function displayCourses() {
+    const chapterListEl = document.getElementById('chapterList');
+    if (!chapterListEl) { // 檢查 DOM 元素
+        console.error("chapterList element not found in displayCourses.");
+        return;
+    }
+    chapterListEl.innerHTML = ''; // 清空
+    const userLevel = currentUser ? (currentUser.memberLevel || 0) : 0;
+    console.log("Displaying courses for userLevel:", userLevel, "Current user:", currentUser); // 日誌
+
+    const coursesByCategory = {};
+    if (!coursesData || coursesData.length === 0) { // 檢查 coursesData 是否有數據
+        console.log("No courses data to display.");
+        chapterListEl.innerHTML = '<p style="padding: 1rem; text-align: center; color: #888;">目前沒有課程。</p>';
+        return;
+    }
+
+    coursesData.forEach(course => {
+        const category = course.category || '所有課程';
+        if (!coursesByCategory[category]) coursesByCategory[category] = [];
+        coursesByCategory[category].push(course);
+    });
+
+    if (Object.keys(coursesByCategory).length === 0 && coursesData.length > 0) {
+         coursesByCategory['所有課程'] = [...coursesData];
+    }
+
+    let globalLessonCounter = 0;
+    Object.keys(coursesByCategory).sort().forEach((category, categoryIndex) => {
+        const chapterDiv = document.createElement('div');
+        chapterDiv.className = 'chapter';
+        if (categoryIndex === 0) chapterDiv.classList.add('expanded');
+
+        let lessonsHTML = '';
+        coursesByCategory[category].forEach(course => {
+            const requiredLevel = typeof course.requiredLevel === 'number' ? course.requiredLevel : 0;
+            const isLocked = requiredLevel > userLevel;
+            // const courseGlobalIndex = coursesData.findIndex(c => c.id === course.id); // 這一行可以簡化，因為我們是遍歷 coursesData 處理的
+            const courseGlobalIndex = coursesData.indexOf(course);
+
+
+            // 檢查 course.title 是否存在
+            const courseTitle = course.title ? course.title.replace(/'/g, "\\'") : "未知標題";
+
+            lessonsHTML += `
+                <div class="lesson ${isLocked ? 'locked' : ''} ${currentSelectedCourseIndex === courseGlobalIndex ? 'active' : ''}"
+                     data-course-index="${courseGlobalIndex}"
+                     onclick="handleLessonClick(${courseGlobalIndex}, ${isLocked}, '${courseTitle}', ${requiredLevel})">
+                    <div class="lesson-icon-wrapper"><span class="lesson-icon">${globalLessonCounter + 1}</span></div>
+                    <div class="lesson-info">
+                        <div class="lesson-title">${course.title || "未知標題"}</div>
+                        <div class="lesson-duration">${course.duration || ''}</div>
+                    </div>
+                </div>
+            `;
+            globalLessonCounter++;
+        });
+
+        chapterDiv.innerHTML = `
+            <div class="chapter-title" onclick="toggleChapterExpansion(this)">
+                <span>${category}</span>
+                <span class="chapter-icon">${categoryIndex === 0 ? '▼' : '▶'}</span>
+            </div>
+            <div class="lesson-list">${lessonsHTML}</div>
+        `;
+        chapterListEl.appendChild(chapterDiv);
+    });
+
+     if (globalLessonCounter === 0) { // 再次檢查，如果分類後沒有課程
+         chapterListEl.innerHTML = '<p style="padding: 1rem; text-align: center; color: #888;">目前沒有可顯示的課程。</p>';
+     }
+}
+
+
+        function toggleChapterExpansion(chapterTitleElement) {
+            chapterTitleElement.parentElement.classList.toggle('expanded');
+            const icon = chapterTitleElement.querySelector('.chapter-icon');
+            icon.textContent = chapterTitleElement.parentElement.classList.contains('expanded') ? '▼' : '▶';
+        }
+
+        function handleLessonClick(courseIndex, isLocked, courseTitle, requiredLevel) {
+            if (isLocked) {
+                const userLevel = currentUser ? (currentUser.memberLevel || 0) : 0;
+                if (currentUser) {
+                    alert(`抱歉，「${courseTitle}」需要會員等級 ${requiredLevel} 才能觀看。\n您目前的等級是 ${userLevel}。`);
+                } else {
+                    alert('請先登入以觀看此進階課程。');
+                    showAuthModal('login');
+                }
+                return;
+            }
+            loadSingleCourse(courseIndex);
+        }
+
+function loadSingleCourse(courseIndex) {
+    // 1. 參數有效性檢查 (這部分你已經有了)
+    if (courseIndex < 0 || courseIndex >= coursesData.length) {
+        console.warn("Invalid course index for loadSingleCourse:", courseIndex);
+        return;
+    }
+    currentSelectedCourseIndex = courseIndex; // 更新全域選中索引 (這部分你可能也有)
+
+    // 2. ↓↓↓ 在這裡添加缺失的行 ↓↓↓
+    const course = coursesData[courseIndex];
+
+    // 3. 對 course 物件本身進行檢查 (這是一個好習慣)
+    if (!course) {
+        console.error("Course object is undefined for index:", courseIndex, "coursesData:", coursesData);
+        // 可以在這裡顯示一個用戶提示，例如 "無法載入所選課程資料。"
+        // 或者嘗試隱藏課程顯示區域，顯示歡迎訊息
+        if(document.getElementById('courseDisplayArea')) document.getElementById('courseDisplayArea').classList.add('hidden');
+        if(document.getElementById('welcomeContent')) document.getElementById('welcomeContent').classList.remove('hidden');
+        return;
+    }
+
+    // 4. 後續使用 course 變數的程式碼 (保持不變或根據需要調整)
+    console.log("Loading single course:", course.title, course);
+
+    document.querySelectorAll('.lesson').forEach(el => el.classList.remove('active'));
+    const activeLessonEl = document.querySelector(`.lesson[data-course-index="${courseIndex}"]`);
+    if (activeLessonEl) {
+        activeLessonEl.classList.add('active');
+    } else {
+        console.warn("Could not find lesson element with data-course-index:", courseIndex);
+    }
+
+    if(document.getElementById('welcomeContent')) document.getElementById('welcomeContent').classList.add('hidden');
+    if(document.getElementById('courseDisplayArea')) document.getElementById('courseDisplayArea').classList.remove('hidden');
+
+    document.getElementById('currentLessonTitle').textContent = course.title || "未知標題";
+    const descriptionHTML = course.description ? course.description.replace(/\n/g, '<br>') : '暫無課程概覽。';
+    document.getElementById('currentLessonDescription').innerHTML = descriptionHTML;
+
+    const transcriptHTML = course.transcript ? course.transcript.replace(/\n/g, '<br>') : '<p>暫無課程講義。</p>';
+    document.getElementById('transcriptContent').innerHTML = transcriptHTML;
+
+    const youtubePlayer = document.getElementById('youtubePlayer');
+    let videoSrc = '';
+    // 使用我之前建議的修改後的影片 src 設定邏輯
+    if (course.playlistId && String(course.playlistId).trim() !== "") {
+        videoSrc = `https://www.youtube.com/embed/videoseries?list=${String(course.playlistId).trim()}&autoplay=0&showinfo=1&controls=1&loop=0`;
+    } else if (course.youtubeVideoId && String(course.youtubeVideoId).trim() !== "") {
+        videoSrc = `https://www.youtube.com/embed/${String(course.youtubeVideoId).split('&')[0]}?modestbranding=1&rel=0&autoplay=0`;
+    } else {
+        console.log("No video ID or playlist ID for course:", course.title || "Unknown Title");
+        videoSrc = "";
+    }
+    youtubePlayer.src = videoSrc;
+    console.log("Set video src to:", videoSrc);
+
+    updateNavigationButtons();
+    switchTab(null, 'overviewTab', true);
+}
+        function previousLesson() {
+            if (currentSelectedCourseIndex > 0) {
+                loadSingleCourse(currentSelectedCourseIndex - 1);
+            }
+        }
+
+        function nextLesson() {
+            if (currentSelectedCourseIndex < coursesData.length - 1) {
+                loadSingleCourse(currentSelectedCourseIndex + 1);
+            }
+        }
+
+        function updateNavigationButtons() {
+            document.getElementById('prevLessonBtn').disabled = currentSelectedCourseIndex <= 0;
+            document.getElementById('nextLessonBtn').disabled = currentSelectedCourseIndex >= coursesData.length - 1;
+        }
+
+        function switchTab(event, tabId, isDefault = false) {
+            document.querySelectorAll('.tab-content').forEach(tc => tc.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+
+            document.querySelectorAll('.content-tab').forEach(tb => tb.classList.remove('active'));
+            let targetTabButton;
+            if (event && event.currentTarget) {
+                 targetTabButton = event.currentTarget;
+            } else if (isDefault) {
+                const tabs = document.querySelectorAll('.content-tab');
+                for (let tab of tabs) {
+                    if (tab.getAttribute('onclick').includes(tabId)) {
+                        targetTabButton = tab;
+                        break;
                     }
-                } else {
-                    console.warn("User document not found for UID in loadUserData:", user.uid, "This might happen if registration completed auth but failed to write to Firestore, or if user was deleted from Firestore but not Auth.");
-                    // 即使文檔不存在，也創建一個帶有預設 memberLevel 的 currentUser 物件
-                    // 這樣 onAuthStateChanged 後續的 loadCourses 至少有一個 memberLevel 可以參考
-                    // 但理想情況下，註冊時應該保證 users 文檔被創建
-                    currentUser = { uid: user.uid, email: user.email, username: user.email.split('@')[0], memberLevel: 0 };
                 }
-            } catch (error) {
-                console.error('載入使用者資料失敗：', error);
-                currentUser = { uid: user.uid, email: user.email, username: '讀取失敗', memberLevel: 0 };
             }
-            updateUserUI();
+            if (targetTabButton) targetTabButton.classList.add('active');
         }
 
-        // ========== 更新使用者介面 ==========
-        function updateUserUI() {
-            const userInfoSpan = document.getElementById('userInfo');
-            const authButton = document.getElementById('authButton');
-            if (currentUser) {
-                userInfoSpan.textContent = currentUser.username || currentUser.email;
-                authButton.textContent = '登出';
+        document.addEventListener('DOMContentLoaded', () => {
+            if (typeof firebase !== 'undefined' && auth && db) {
+                initializeAppDisplay();
             } else {
-                userInfoSpan.textContent = '訪客';
-                authButton.textContent = '登入';
+                showLandingPage();
             }
-            if (currentPage === 'main') {
-                loadCourses();
-            }
-        }
-
-        // ========== 登出 ==========
-        async function logout() {
-            if (!auth) {
-                 console.error("Firebase Auth is not initialized. Cannot logout.");
-                 return;
-            }
-            try {
-                await auth.signOut();
-            } catch (error) {
-                console.error('登出失敗：', error);
-            }
-        }
-
-             // ========== 載入課程 ==========
-        async function loadCourses() {
-            if (!db) {
-                console.error("Firestore is not initialized. Cannot load courses.");
-                document.getElementById('loadingCourses').textContent = '服務錯誤，無法載入課程。';
-                return;
-            }
-            const loadingCoursesDiv = document.getElementById('loadingCourses');
-            const courseListUl = document.getElementById('courseList');
-
-            loadingCoursesDiv.style.display = 'block';
-            loadingCoursesDiv.textContent = '載入課程中...';
-            // courseListUl.innerHTML = ''; // 暫時註解，先看 snapshot
-
-            try {
-                console.log("Attempting to load ALL courses from Firestore (rules will allow if auth!=null or reqLevel=0)...");
-                const query = db.collection('courses').orderBy('order');
-
-                const snapshot = await query.get();
-                console.log(`Fetched ${snapshot.docs.length} courses.`);
-                
-                // **** 以下是新增的日誌 ****
-                console.log("Snapshot docs array:", snapshot.docs); 
-                
-                courses = []; // 初始化/清空 courses 陣列
-
-                snapshot.forEach(doc => {
-                    // **** 以下是新增的日誌 ****
-                    console.log("Inside forEach, doc ID:", doc.id); 
-                    
-                    const courseData = doc.data(); // 先獲取文檔數據
-                    console.log(`Processing course: "${courseData.title}", Firestore youtubeVideoId: "${courseData.youtubeVideoId}", All data:`, JSON.stringify(courseData));
-                    
-                    courses.push({
-                        id: doc.id,
-                        ...courseData // 使用解構賦值將所有數據加入
-                    });
-                });
-                
-                // 在確認 forEach 執行後，再取消註解下面的 courseListUl.innerHTML = ''; 和 displayCourses();
-                courseListUl.innerHTML = ''; // 清空舊列表
-                displayCourses(); // displayCourses 會根據用戶等級處理鎖定
-                loadingCoursesDiv.style.display = 'none';
-            } catch (error) {
-                console.error('載入課程失敗：', error);
-                let errorMsg = '載入課程失敗，請重新整理頁面。';
-                if (error.code === 'permission-denied' || (error.message && error.message.includes('permission'))) {
-                    errorMsg = '載入課程失敗：權限不足。請檢查 Firestore 安全規則以及用戶的會員等級。';
-                }
-                loadingCoursesDiv.textContent = errorMsg;
-            }
-        }
-
-               // ========== 載入課程 ==========
-        async function loadCourses() {
-            if (!db) {
-                console.error("Firestore is not initialized. Cannot load courses.");
-                document.getElementById('loadingCourses').textContent = '服務錯誤，無法載入課程。';
-                return;
-            }
-            const loadingCoursesDiv = document.getElementById('loadingCourses');
-            const courseListUl = document.getElementById('courseList');
-
-            loadingCoursesDiv.style.display = 'block';
-            loadingCoursesDiv.textContent = '載入課程中...';
-            // courseListUl.innerHTML = ''; // 為了調試forEach，暫時註解
-
-            try {
-                console.log("Attempting to load ALL courses from Firestore (rules will allow if auth!=null or reqLevel=0)...");
-                const query = db.collection('courses').orderBy('order');
-
-                const snapshot = await query.get();
-                console.log(`Fetched ${snapshot.docs.length} courses.`);
-                
-                console.log("Snapshot docs array:", snapshot.docs); 
-                
-                courses = []; 
-
-                snapshot.forEach(doc => {
-                    console.log("Inside forEach, doc ID:", doc.id); 
-                    const courseData = doc.data(); 
-                    console.log(`Processing course: "${courseData.title}", Firestore youtubeVideoId: "${courseData.youtubeVideoId}", All data:`, JSON.stringify(courseData));
-                    courses.push({
-                        id: doc.id,
-                        ...courseData 
-                    });
-                });
-                
-                courseListUl.innerHTML = ''; // 清空舊列表 (確認 forEach 執行後再放回來)
-                displayCourses(); 
-                loadingCoursesDiv.style.display = 'none';
-            } catch (error) {
-                console.error('載入課程失敗：', error);
-                let errorMsg = '載入課程失敗，請重新整理頁面。';
-                if (error.code === 'permission-denied' || (error.message && error.message.includes('permission'))) {
-                    errorMsg = '載入課程失敗：權限不足。請檢查 Firestore 安全規則以及用戶的會員等級。';
-                }
-                loadingCoursesDiv.textContent = errorMsg;
-            }
-        } // **** 確保 loadCourses 函數在這裡正確結束 ****
-
-        // ========== 顯示課程列表 ==========
-        function displayCourses() {
-            const courseListUl = document.getElementById('courseList');
-            courseListUl.innerHTML = '';
-
-            // 在這裡再次確認 currentUser 和 memberLevel
-            console.log("Displaying courses. Current user:", currentUser);
-            const userLevel = currentUser && typeof currentUser.memberLevel !== 'undefined' ? currentUser.memberLevel : 0;
-            console.log("User level for course display:", userLevel);
-
-
-            if (courses.length === 0) {
-                courseListUl.innerHTML = '<li style="color: #aaa; text-align: center; padding: 1rem 0;">暫無課程</li>';
-                return;
-            }
-
-            courses.forEach(course => {
-                const li = document.createElement('li');
-                li.className = 'course-item';
-                li.textContent = course.title;
-
-                // 確保 course.requiredLevel 是數字，如果不是，給個預設值
-                const requiredLevel = typeof course.requiredLevel === 'number' ? course.requiredLevel : 0;
-
-                if (requiredLevel > userLevel) {
-                    li.classList.add('locked');
-                    li.title = "需要更高會員等級或登入";
-                    li.onclick = () => {
-                        if (currentUser) {
-                            alert(`此課程「${course.title}」需要更高的會員等級才能觀看。`);
-                        } else {
-                            alert('請先登入以觀看進階課程。');
-                            showAuthModal('login');
+            const authModalInputs = ['emailInput', 'usernameInput', 'passwordInput'];
+            authModalInputs.forEach(id => {
+                const input = document.getElementById(id);
+                if (input) {
+                    input.addEventListener('keypress', function(e) {
+                        if (e.key === 'Enter' && !authModalEl.classList.contains('hidden')) {
+                            handleAuth();
                         }
-                    };
-                } else {
-                    li.onclick = () => loadCourse(course);
-                }
-                courseListUl.appendChild(li);
-            });
-        }
-
-               // ========== 載入單一課程 ==========
-        function loadCourse(course) {
-            // **** 在函數開頭打印傳入的 course 物件，用於調試 ****
-            console.log(`loadCourse called for: "${course.title}". Full course object:`, JSON.stringify(course));
-
-            document.querySelectorAll('.course-item').forEach(item => {
-                item.classList.remove('active');
-                if (item.textContent === course.title) {
-                    item.classList.add('active');
+                    });
                 }
             });
+        });
 
-            document.getElementById('welcomeMessage').classList.add('hidden');
-            document.getElementById('courseContent').classList.remove('hidden');
-
-            document.getElementById('courseTitle').textContent = course.title;
-
-            const youtubePlayer = document.getElementById('youtubePlayer');
-            if (course.youtubeVideoId && course.youtubeVideoId.trim() !== "") {
-                const videoId = course.youtubeVideoId.split('&')[0];
-                youtubePlayer.src = `https://www.youtube.com/embed/${videoId}`;
-                console.log(`Setting YouTube player src for "${course.title}" to: ${youtubePlayer.src}`);
-            } else {
-                youtubePlayer.src = '';
-                // **** 修改日誌，包含課程標題 ****
-                console.log(`YouTube video ID is missing or empty for "${course.title}", clearing player src.`);
+        window.addEventListener('click', function(event) {
+            if (event.target === authModalEl) {
+                closeAuthModal();
             }
-            document.getElementById('courseDescription').textContent = course.description || '暫無課程描述。';
-        }
+        });
 
-        // 初始化
-        if (!auth) {
-            showLandingPage();
-        } else if (!auth.currentUser && currentPage !== 'landing' && currentPage !== 'choice') {
-             showLandingPage();
-        }
     </script>
 </body>
 </html>
