@@ -18,31 +18,29 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Helvetica Neue", "Microsoft JhengHei", "Jomolhari", "Microsoft Himalaya", "Kailash", sans-serif; /* 添加藏文字體 */
-    /* Jomolhari 是一個常用的開源藏文字體 */
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Helvetica Neue", "Microsoft JhengHei", "Jomolhari", "Microsoft Himalaya", "Kailash", sans-serif;
             background-color: #f8f9fa;
-            color: #343a40; /* 深灰色文字 */
+            color: #343a40;
             overflow-x: hidden;
             line-height: 1.6;
         }
 
         .hidden { display: none !important; }
 
-        /* ========== 首頁新樣式 ========== */
-        .landing-page-container {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            /* 替換為你的背景圖片 URL，或使用漸變 */
-            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1501785888041-af3ef285b470?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'); /* 示例圖片，請替換 */
-            background-size: cover;
-            background-position: center;
-            color: white; /* 文字顏色改為白色以適應深色背景 */
-            text-align: center;
-            padding: 2rem;
-        }
+       /* ========== 首頁新樣式 ========== */
+.landing-page-container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('images/logo_background.png');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    text-align: center;
+    padding: 2rem;
+}
 
         .landing-content-wrapper {
             max-width: 800px;
@@ -61,11 +59,10 @@
         }
 
         .landing-title {
-            font-size: 3rem; /* 根據需要調整 */
-            font-weight: 700; /* 加粗 */
+            font-size: 3rem;
+            font-weight: 700;
             margin-bottom: 1rem;
             line-height: 1.2;
-            /* letter-spacing: 1px; */ /* 可選的字間距 */
         }
 
         .landing-subtitle {
@@ -81,28 +78,28 @@
             display: flex;
             gap: 1.5rem;
             justify-content: center;
-            flex-wrap: wrap; /* 在小屏幕上換行 */
+            flex-wrap: wrap;
         }
 
         .landing-btn {
             padding: 0.9rem 2.2rem;
-            border-radius: 30px; /* 更圓潤的按鈕 */
+            border-radius: 30px;
             font-size: 1rem;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
             text-decoration: none;
             display: inline-block;
-            border: 2px solid transparent; /* 為 secondary 按鈕準備邊框空間 */
+            border: 2px solid transparent;
         }
 
         .landing-btn.primary {
             background-color: white;
-            color: #8A6D46; /* 深一點的棕金色 */
+            color: #8A6D46;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
         .landing-btn.primary:hover {
-            background-color: #f8f0e3; /* 淺米色懸停 */
+            background-color: #f8f0e3;
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
         }
@@ -117,11 +114,11 @@
             transform: translateY(-2px);
         }
 
-        /* --- 頂部導航欄樣式 (確保標題完整顯示) --- */
+        /* --- 頂部導航欄樣式 --- */
         .top-nav {
             background: #fff;
             border-bottom: 1px solid #e0e0e0;
-            padding: 0 1.5rem; /* 稍微減少 padding */
+            padding: 0 1.5rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -132,322 +129,959 @@
             z-index: 100;
             box-shadow: 0 2px 4px rgba(0,0,0,0.05);
         }
-        .nav-left { display: flex; align-items: center; gap: 0.75rem; /* 調整 gap */ }
-        .logo { /* 用於主應用程式頂部導航 */
+        
+        .nav-left { 
+            display: flex; 
+            align-items: center; 
+            gap: 0.75rem;
+            flex: 1;
+        }
+        
+        .logo {
             display: flex;
             align-items: center;
-            gap: 0.6rem; /* 調整logo圖示和文字間距 */
-            font-size: 1.1rem; /* 可適當調整 */
+            gap: 0.6rem;
+            font-size: 1.1rem;
             font-weight: 600;
-            color: #685335; /* 深一點的棕色，確保可讀性 */
+            color: #685335;
             text-decoration: none;
             cursor: pointer;
-            white-space: nowrap; /* 防止標題換行 */
+            white-space: nowrap;
         }
-        .logo-icon { /* 用於主應用程式頂部導航 */
-            width: 30px; /* 稍微調整大小 */
+        
+        .logo-icon {
+            width: 30px;
             height: 30px;
-            background: linear-gradient(135deg, #8B6F47, #B08D57); /* 調整漸變 */
-            border-radius: 6px; /* 改為圓角矩形 */
+            background: linear-gradient(135deg, #8B6F47, #B08D57);
+            border-radius: 6px;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
             font-weight: bold;
-            font-size: 0.9rem; /* 調整圖示內文字大小 */
-            flex-shrink: 0; /* 防止圖示被壓縮 */
+            font-size: 0.9rem;
+            flex-shrink: 0;
         }
 
-        /* (保留你第二份程式碼中 .nav-links, .nav-right, .user-menu, .user-avatar 等樣式，
-           以及 .main-container, .course-sidebar, .content-area, .auth-modal 等主體樣式)
-           這裡省略了大量你之前已有的 CSS，只展示關鍵修改和新增部分
-        */
-        /* ... 這裡應該是你之前版本中 mainApp 相關的 CSS ... */
-        .main-container { margin-top: 60px; display: flex; height: calc(100vh - 60px); }
-        .course-sidebar { width: 300px; background: #fff; border-right: 1px solid #e0e0e0; overflow-y: auto; flex-shrink: 0; padding-bottom: 60px; }
-        .course-header { padding: 1.25rem; border-bottom: 1px solid #e0e0e0; }
-        .course-title-main { font-size: 1.1rem; font-weight: 600; color: #333; margin-bottom: 0.5rem; }
-         .chapter-list { padding: 0.5rem 0; }
-        .chapter { margin-bottom: 0.25rem; }
-        .chapter-title { padding: 0.75rem 1.5rem; font-size: 0.9rem; font-weight: 500; color: #555; background: #f8f9fa; cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: all 0.2s; border-top: 1px solid #eee; }
-        .chapter-title:first-child { border-top: none; }
-        .chapter-title:hover { background: #e9ecef; }
-        .chapter-icon { font-size: 0.75rem; transition: transform 0.2s; }
-        .chapter.expanded .chapter-icon { transform: rotate(90deg); }
-        .lesson-list { max-height: 0; overflow: hidden; transition: max-height 0.35s cubic-bezier(0.25, 0.1, 0.25, 1); background-color: #fff; }
-        .chapter.expanded .lesson-list { max-height: 1000px; }
-        .lesson { padding: 0.8rem 1rem 0.8rem 2.5rem; display: flex; align-items: center; gap: 0.75rem; cursor: pointer; transition: background 0.2s; position: relative; border-bottom: 1px solid #f0f0f0;}
-        .lesson:last-child { border-bottom: none; }
-        .lesson:hover { background: #f1f3f5; }
-        .lesson.active { background: #FFF3E0; color: #8B6F47; font-weight: 500; }
-        .lesson.active::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: #D4A574; border-top-right-radius: 2px; border-bottom-right-radius: 2px; }
-        .lesson-icon-wrapper { width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-        .lesson-icon { width: 18px; height: 18px; border-radius: 50%; border: 1.5px solid #ccc; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; color: #999; }
-        .lesson.locked .lesson-icon::after { content: "🔒"; font-size: 0.8em; color: #aaa; position: absolute; right: 1rem; top: 50%; transform: translateY(-50%); }
-        .lesson.locked { opacity: 0.6; cursor: not-allowed; background-image: repeating-linear-gradient(-45deg, transparent, transparent 4px, rgba(0,0,0,0.02) 4px, rgba(0,0,0,0.02) 8px); }
-        .lesson-info { flex: 1; }
-        .lesson-title { font-size: 0.875rem; color: #333; margin-bottom: 0.1rem; }
-        .lesson.active .lesson-title { color: #8B6F47; }
-        .lesson-duration { font-size: 0.75rem; color: #999; }
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        /* 用戶下拉選單樣式 */
+        .user-menu-container {
+            position: relative;
+        }
+        
+        .user-menu {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            padding: 0.5rem 0.8rem;
+            border-radius: 20px;
+            background: #f8f9fa;
+            transition: all 0.2s;
+        }
+        
+        .user-menu:hover {
+            background: #e9ecef;
+        }
+        
+        .user-avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #8B6F47, #D4A574);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        .dropdown-arrow {
+            font-size: 0.7rem;
+            margin-left: 5px;
+            transition: transform 0.2s ease-in-out;
+        }
+        
+        .user-menu-container.open .dropdown-arrow {
+            transform: rotate(180deg);
+        }
+
+        .user-dropdown {
+            position: absolute;
+            top: calc(100% + 8px);
+            right: 0;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            width: 220px;
+            z-index: 110;
+            overflow: hidden;
+            border: 1px solid #eee;
+            animation: fadeInDropdown 0.2s ease-out;
+        }
+
+        @keyframes fadeInDropdown {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .dropdown-user-info {
+            padding: 1rem;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        
+        .dropdown-user-info strong {
+            display: block;
+            font-size: 0.95rem;
+            color: #333;
+            margin-bottom: 0.25rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        .dropdown-user-info span {
+            font-size: 0.8rem;
+            color: #777;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .dropdown-item {
+            display: block;
+            padding: 0.75rem 1rem;
+            font-size: 0.9rem;
+            color: #555;
+            text-decoration: none;
+            transition: background-color 0.15s ease-in-out;
+        }
+        
+        .dropdown-item:hover {
+            background-color: #f8f9fa;
+            color: #8B6F47;
+        }
+        
+        .dropdown-item:not(:last-child) {
+            border-bottom: 1px solid #f5f5f5;
+        }
+
+        .main-container { 
+            margin-top: 60px; 
+            display: flex; 
+            height: calc(100vh - 60px); 
+        }
+        
+        .course-sidebar { 
+            width: 300px; 
+            background: #fff; 
+            border-right: 1px solid #e0e0e0; 
+            overflow-y: auto; 
+            flex-shrink: 0; 
+            padding-bottom: 60px; 
+        }
+        
+        .course-header { 
+            padding: 1.25rem; 
+            border-bottom: 1px solid #e0e0e0; 
+        }
+        
+        .course-title-main { 
+            font-size: 1.1rem; 
+            font-weight: 600; 
+            color: #333; 
+            margin-bottom: 0.5rem; 
+        }
+        
+        .chapter-list { 
+            padding: 0.5rem 0; 
+        }
+        
+        .chapter { 
+            margin-bottom: 0.25rem; 
+        }
+        
+        .chapter-title { 
+            padding: 0.75rem 1.5rem; 
+            font-size: 0.9rem; 
+            font-weight: 500; 
+            color: #555; 
+            background: #f8f9fa; 
+            cursor: pointer; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            transition: all 0.2s; 
+            border-top: 1px solid #eee; 
+        }
+        
+        .chapter-title:first-child { 
+            border-top: none; 
+        }
+        
+        .chapter-title:hover { 
+            background: #e9ecef; 
+        }
+        
+        .chapter-icon { 
+            font-size: 0.75rem; 
+            transition: transform 0.2s; 
+        }
+        
+        .chapter.expanded .chapter-icon { 
+            transform: rotate(90deg); 
+        }
+        
+        .lesson-list { 
+            max-height: 0; 
+            overflow: hidden; 
+            transition: max-height 0.35s cubic-bezier(0.25, 0.1, 0.25, 1); 
+            background-color: #fff; 
+        }
+        
+        .chapter.expanded .lesson-list { 
+            max-height: 1000px; 
+        }
+        
+        .lesson { 
+            padding: 0.8rem 1rem 0.8rem 2.5rem; 
+            display: flex; 
+            align-items: center; 
+            gap: 0.75rem; 
+            cursor: pointer; 
+            transition: background 0.2s; 
+            position: relative; 
+            border-bottom: 1px solid #f0f0f0;
+        }
+        
+        .lesson:last-child { 
+            border-bottom: none; 
+        }
+        
+        .lesson:hover { 
+            background: #f1f3f5; 
+        }
+        
+        .lesson.active { 
+            background: #FFF3E0; 
+            color: #8B6F47; 
+            font-weight: 500; 
+        }
+        
+        .lesson.active::before { 
+            content: ''; 
+            position: absolute; 
+            left: 0; 
+            top: 0; 
+            bottom: 0; 
+            width: 4px; 
+            background: #D4A574; 
+            border-top-right-radius: 2px; 
+            border-bottom-right-radius: 2px; 
+        }
+        
+        .lesson-icon-wrapper { 
+            width: 24px; 
+            height: 24px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            flex-shrink: 0; 
+        }
+        
+        .lesson-icon { 
+            width: 18px; 
+            height: 18px; 
+            border-radius: 50%; 
+            border: 1.5px solid #ccc; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            font-size: 0.7rem; 
+            color: #999; 
+        }
+        
+        .lesson.locked .lesson-icon::after { 
+            content: "🔒"; 
+            font-size: 0.8em; 
+            color: #aaa; 
+            position: absolute; 
+            right: 1rem; 
+            top: 50%; 
+            transform: translateY(-50%); 
+        }
+        
+        .lesson.locked { 
+            opacity: 0.6; 
+            cursor: not-allowed; 
+            background-image: repeating-linear-gradient(-45deg, transparent, transparent 4px, rgba(0,0,0,0.02) 4px, rgba(0,0,0,0.02) 8px); 
+        }
+        
+        .lesson-info { 
+            flex: 1; 
+        }
+        
+        .lesson-title { 
+            font-size: 0.875rem; 
+            color: #333; 
+            margin-bottom: 0.1rem; 
+        }
+        
+        .lesson.active .lesson-title { 
+            color: #8B6F47; 
+        }
+        
+        .lesson-duration { 
+            font-size: 0.75rem; 
+            color: #999; 
+        }
 
         /* 影片和內容區域 */
-        .content-area { flex: 1; background: #f0f2f5; overflow-y: auto; display: flex; flex-direction: column; }
-        .video-section { background: #000; position: relative; padding-bottom: 56.25%; overflow: hidden; width: 100%; flex-shrink: 0;}
-        .video-container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
-        .video-container iframe { width: 100%; height: 100%; border: none; }
-        .content-section { background: #fff; margin: 1rem; border-radius: 8px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.05); flex-grow: 1; display: flex; flex-direction: column; }
-        .content-tabs { display: flex; border-bottom: 1px solid #e0e0e0; background: #fdfdfd; flex-shrink: 0; }
-        .content-tab { padding: 0.8rem 1.5rem; cursor: pointer; color: #666; font-size: 0.9rem; font-weight: 500; position: relative; transition: all 0.2s; }
-        .content-tab:hover { color: #333; }
-        .content-tab.active { color: #8B6F47; }
-        .content-tab.active::after { content: ''; position: absolute; bottom: -1px; left: 0; right: 0; height: 2px; background: #8B6F47; }
-        .tab-content-wrapper { overflow-y: auto; flex-grow: 1; }
-        .tab-content { padding: 1.5rem; display: none; }
-        .tab-content.active { display: block; }
-        #currentLessonTitle { font-size: 1.4rem; margin-bottom: 0.75rem; color: #333; font-weight: 600; } /* 調整課程標題大小 */
-        .tab-content h3 { font-size: 1.1rem; margin-bottom: 1rem; color: #333; }
-        .tab-content p, .tab-content div { line-height: 1.7; color: #555; margin-bottom: 1rem; font-size: 0.9rem; }
-        .bottom-controls { flex-shrink: 0; background: #fff; border-top: 1px solid #e0e0e0; padding: 0.75rem 1.5rem; display: flex; justify-content: space-between; align-items: center; }
-        .control-btn { padding: 0.6rem 1.2rem; border: 1px solid #e0e0e0; border-radius: 6px; background: #fff; color: #666; cursor: pointer; font-size: 0.875rem; transition: all 0.2s; display: flex; align-items: center; gap: 0.5rem;}
-        .control-btn:hover { background: #f8f9fa; border-color: #8B6F47; color: #8B6F47; }
-        .control-btn.primary { background: #8B6F47; color: white; border-color: #8B6F47; }
-        .control-btn.primary:hover { background: #7A5F3C; }
-        .control-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+        .content-area { 
+            flex: 1; 
+            background: #f0f2f5; 
+            overflow-y: auto; 
+            display: flex; 
+            flex-direction: column; 
+        }
+        
+        .video-section { 
+            background: #000; 
+            position: relative; 
+            padding-bottom: 56.25%; 
+            overflow: hidden; 
+            width: 100%; 
+            flex-shrink: 0;
+        }
+        
+        .video-container { 
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%; 
+        }
+        
+        .video-container iframe { 
+            width: 100%; 
+            height: 100%; 
+            border: none; 
+        }
+        
+        .content-section { 
+            background: #fff; 
+            margin: 1rem; 
+            border-radius: 8px; 
+            overflow: hidden; 
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05); 
+            flex-grow: 1; 
+            display: flex; 
+            flex-direction: column; 
+        }
+        
+        .content-tabs { 
+            display: flex; 
+            border-bottom: 1px solid #e0e0e0; 
+            background: #fdfdfd; 
+            flex-shrink: 0; 
+        }
+        
+        .content-tab { 
+            padding: 0.8rem 1.5rem; 
+            cursor: pointer; 
+            color: #666; 
+            font-size: 0.9rem; 
+            font-weight: 500; 
+            position: relative; 
+            transition: all 0.2s; 
+        }
+        
+        .content-tab:hover { 
+            color: #333; 
+        }
+        
+        .content-tab.active { 
+            color: #8B6F47; 
+        }
+        
+        .content-tab.active::after { 
+            content: ''; 
+            position: absolute; 
+            bottom: -1px; 
+            left: 0; 
+            right: 0; 
+            height: 2px; 
+            background: #8B6F47; 
+        }
+        
+        .tab-content-wrapper { 
+            overflow-y: auto; 
+            flex-grow: 1; 
+        }
+        
+        .tab-content { 
+            padding: 1.5rem; 
+            display: none; 
+        }
+        
+        .tab-content.active { 
+            display: block; 
+        }
+        
+        #currentLessonTitle { 
+            font-size: 1.4rem; 
+            margin-bottom: 0.75rem; 
+            color: #333; 
+            font-weight: 600; 
+        }
+        
+        .tab-content h3 { 
+            font-size: 1.1rem; 
+            margin-bottom: 1rem; 
+            color: #333; 
+        }
+        
+        .tab-content p, .tab-content div { 
+            line-height: 1.7; 
+            color: #555; 
+            margin-bottom: 1rem; 
+            font-size: 0.9rem; 
+        }
+        
+        .bottom-controls { 
+            flex-shrink: 0; 
+            background: #fff; 
+            border-top: 1px solid #e0e0e0; 
+            padding: 0.75rem 1.5rem; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+        }
+        
+        .control-btn { 
+            padding: 0.6rem 1.2rem; 
+            border: 1px solid #e0e0e0; 
+            border-radius: 6px; 
+            background: #fff; 
+            color: #666; 
+            cursor: pointer; 
+            font-size: 0.875rem; 
+            transition: all 0.2s; 
+            display: flex; 
+            align-items: center; 
+            gap: 0.5rem;
+        }
+        
+        .control-btn:hover { 
+            background: #f8f9fa; 
+            border-color: #8B6F47; 
+            color: #8B6F47; 
+        }
+        
+        .control-btn.primary { 
+            background: #8B6F47; 
+            color: white; 
+            border-color: #8B6F47; 
+        }
+        
+        .control-btn.primary:hover { 
+            background: #7A5F3C; 
+        }
+        
+        .control-btn:disabled { 
+            opacity: 0.5; 
+            cursor: not-allowed; 
+        }
 
+        /* 登入模態框 */
+        .auth-modal { 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%; 
+            background: rgba(0,0,0,0.6); 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            z-index: 1000; 
+            backdrop-filter: blur(3px); 
+        }
+        
+        .auth-form { 
+            background: white; 
+            padding: 2.5rem; 
+            border-radius: 12px; 
+            width: 400px; 
+            max-width: 90%; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15); 
+            position: relative; 
+            animation: zoomIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+        }
+        
+        @keyframes zoomIn { 
+            from { opacity:0; transform: scale(0.9); } 
+            to { opacity:1; transform: scale(1); } 
+        }
+        
+        .auth-header { 
+            text-align: center; 
+            margin-bottom: 1.5rem; 
+        }
+        
+        .auth-logo-modal { 
+            width: 50px; 
+            height: 50px; 
+            background: linear-gradient(135deg, #8B6F47, #D4A574); 
+            border-radius: 10px; 
+            margin: 0 auto 0.75rem; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            color: white; 
+            font-size: 1.2rem; 
+            font-weight: bold;
+        }
+        
+        #authFormTitle { 
+            font-size: 1.5rem; 
+            color: #333; 
+            font-weight: 600; 
+        }
+        
+        .form-group { 
+            margin-bottom: 1.25rem; 
+        }
+        
+        .form-label { 
+            display: block; 
+            margin-bottom: 0.4rem; 
+            color: #555; 
+            font-size: 0.875rem; 
+            font-weight: 500;
+        }
+        
+        .form-input { 
+            width: 100%; 
+            padding: 0.75rem 1rem; 
+            border: 1px solid #ccc; 
+            border-radius: 6px; 
+            font-size: 0.95rem; 
+            transition: all 0.2s; 
+        }
+        
+        .form-input:focus { 
+            outline: none; 
+            border-color: #8B6F47; 
+            box-shadow: 0 0 0 2px rgba(139, 111, 71, 0.1); 
+        }
+        
+        .auth-submit-btn { 
+            width: 100%; 
+            padding: 0.8rem; 
+            background: #8B6F47; 
+            color: white; 
+            border: none; 
+            border-radius: 6px; 
+            font-size: 0.95rem; 
+            font-weight: 600; 
+            cursor: pointer; 
+            transition: all 0.2s; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            gap: 0.5rem; 
+        }
+        
+        .auth-submit-btn:hover { 
+            background: #7A5F3C; 
+        }
+        
+        .auth-switch { 
+            text-align: center; 
+            margin-top: 1.25rem; 
+            color: #666; 
+            font-size: 0.875rem; 
+        }
+        
+        .auth-switch a { 
+            color: #8B6F47; 
+            text-decoration: none; 
+            font-weight: 500; 
+        }
+        
+        .auth-switch a:hover { 
+            text-decoration: underline; 
+        }
+        
+        .close-modal-btn { 
+            position: absolute; 
+            top: 1rem; 
+            right: 1rem; 
+            width: 30px; 
+            height: 30px; 
+            border: none; 
+            background: #f0f0f0; 
+            border-radius: 50%; 
+            cursor: pointer; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            color: #888; 
+            font-size: 1.1rem; 
+            transition: all 0.2s;
+        }
+        
+        .close-modal-btn:hover { 
+            background: #e0e0e0; 
+            color: #555; 
+        }
+        
+        .error-message-modal { 
+            color: #dc3545; 
+            font-size: 0.8rem; 
+            margin-bottom: 1rem; 
+            text-align: center; 
+            min-height: 1em;
+        }
+        
+        .success-message-modal { 
+            color: #28a745; 
+            font-size: 0.8rem; 
+            margin-bottom: 1rem; 
+            text-align: center; 
+            min-height: 1em;
+        }
+        
+        .loading-spinner { 
+            display: inline-block; 
+            width: 18px; 
+            height: 18px; 
+            border: 2.5px solid #f3f3f3; 
+            border-top: 2.5px solid #8B6F47; 
+            border-radius: 50%; 
+            animation: spin 1s linear infinite; 
+        }
+        
+        @keyframes spin { 
+            0% { transform: rotate(0deg); } 
+            100% { transform: rotate(360deg); } 
+        }
 
-        /* 登入模態框 (與之前版本類似，可根據需要調整) */
-        .auth-modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); display: flex; justify-content: center; align-items: center; z-index: 1000; backdrop-filter: blur(3px); }
-        .auth-form { background: white; padding: 2.5rem; border-radius: 12px; width: 400px; max-width: 90%; box-shadow: 0 10px 30px rgba(0,0,0,0.15); position: relative; animation: zoomIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
-        @keyframes zoomIn { from { opacity:0; transform: scale(0.9); } to { opacity:1; transform: scale(1); } }
-        .auth-header { text-align: center; margin-bottom: 1.5rem; }
-        .auth-logo-modal { width: 50px; height: 50px; background: linear-gradient(135deg, #8B6F47, #D4A574); border-radius: 10px; margin: 0 auto 0.75rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2rem; font-weight: bold;}
-        #authFormTitle { font-size: 1.5rem; color: #333; font-weight: 600; }
-        .form-group { margin-bottom: 1.25rem; }
-        .form-label { display: block; margin-bottom: 0.4rem; color: #555; font-size: 0.875rem; font-weight: 500;}
-        .form-input { width: 100%; padding: 0.75rem 1rem; border: 1px solid #ccc; border-radius: 6px; font-size: 0.95rem; transition: all 0.2s; }
-        .form-input:focus { outline: none; border-color: #8B6F47; box-shadow: 0 0 0 2px rgba(139, 111, 71, 0.1); }
-        .auth-submit-btn { width: 100%; padding: 0.8rem; background: #8B6F47; color: white; border: none; border-radius: 6px; font-size: 0.95rem; font-weight: 600; cursor: pointer; transition: all 0.2s; display: flex; justify-content: center; align-items: center; gap: 0.5rem; }
-        .auth-submit-btn:hover { background: #7A5F3C; }
-        .auth-switch { text-align: center; margin-top: 1.25rem; color: #666; font-size: 0.875rem; }
-        .auth-switch a { color: #8B6F47; text-decoration: none; font-weight: 500; }
-        .auth-switch a:hover { text-decoration: underline; }
-        .close-modal-btn { position: absolute; top: 1rem; right: 1rem; width: 30px; height: 30px; border: none; background: #f0f0f0; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; color: #888; font-size: 1.1rem; transition: all 0.2s;}
-        .close-modal-btn:hover { background: #e0e0e0; color: #555; }
-        .error-message-modal { color: #dc3545; font-size: 0.8rem; margin-bottom: 1rem; text-align: center; min-height: 1em;}
-        .success-message-modal { color: #28a745; font-size: 0.8rem; margin-bottom: 1rem; text-align: center; min-height: 1em;}
-        .loading-spinner { display: inline-block; width: 18px; height: 18px; border: 2.5px solid #f3f3f3; border-top: 2.5px solid #8B6F47; border-radius: 50%; animation: spin 1s linear infinite; }
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        #welcomeContent { 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            justify-content: center; 
+            height: 100%; 
+            text-align: center; 
+            padding: 2rem; 
+            color: #777; 
+        }
+        
+        #welcomeContent h1 { 
+            font-size: 1.8rem; 
+            margin-bottom: 0.75rem; 
+            color: #444; 
+        }
+        
+        #welcomeContent p { 
+            font-size: 1rem; 
+            margin-bottom: 1.5rem; 
+        }
+        
+        #welcomeContent img { 
+            max-width: 100%; 
+            width: 350px; 
+            height: auto; 
+            border-radius: 8px; 
+            opacity: 0.6; 
+        }
 
-        #welcomeContent { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; text-align: center; padding: 2rem; color: #777; }
-        #welcomeContent h1 { font-size: 1.8rem; margin-bottom: 0.75rem; color: #444; }
-        #welcomeContent p { font-size: 1rem; margin-bottom: 1.5rem; }
-        #welcomeContent img { max-width: 100%; width: 350px; height: auto; border-radius: 8px; opacity: 0.6; } /* 調整圖片大小和透明度 */
+        /* 首頁多語言標題 */
+        .landing-title-multilang {
+            margin-bottom: 1.5rem;
+            line-height: 1.3;
+        }
+        
+        .landing-title-multilang div {
+            display: block;
+        }
+        
+        .lang-tibetan {
+            font-size: 2.2rem;
+            font-family: "Jomolhari", "Microsoft Himalaya", "Kailash", serif;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #FFD700;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+        }
+        
+        .lang-chinese {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 0.3rem;
+        }
+        
+        .lang-english {
+            font-size: 1.1rem;
+            font-weight: 400;
+            opacity: 0.85;
+            letter-spacing: 0.5px;
+        }
 
-  /* 在 body 或一個通用選擇器中定義藏文字體 (如果系統沒有合適的，需要引入) */
-body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Helvetica Neue", "Microsoft JhengHei", "Jomolhari", "Microsoft Himalaya", "Kailash", sans-serif; /* 添加藏文字體 */
-    /* Jomolhari 是一個常用的開源藏文字體 */
-}
+        /* 主應用頂部導航多語言標題 */
+        .logo-text-multilang {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.1;
+            align-items: flex-start;
+            flex-grow: 1; /* <--- 確保有此行，讓它可以伸展 */
+            min-width: 0;
+        }
+        
+        .logo-text-multilang span {
+            display: block;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 350px;
+        }
+        
+        .lang-tibetan-nav {
+            font-size: 0.75rem;
+            font-family: "Jomolhari", "Microsoft Himalaya", "Kailash", serif;
+            color: #795548;
+            margin-bottom: 1px;
+        }
+        
+        .lang-chinese-nav {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #5D4037;
+        }
+        
+        .lang-english-nav {
+            font-size: 0.65rem;
+            color: #A1887F;
+            font-weight: 400;
+        }
 
-/* 首頁多語言標題 */
-.landing-title-multilang {
-    margin-bottom: 1.5rem;
-    line-height: 1.3;
-}
-.landing-title-multilang div {
-    display: block; /* 每種語言一行 */
-}
-.lang-tibetan {
-    font-size: 2.2rem; /* 藏文可以稍微大一點或根據實際調整 */
-    font-family: "Jomolhari", "Microsoft Himalaya", "Kailash", serif; /* 指定藏文字體 */
-    margin-bottom: 0.5rem;
-    font-weight: 500;
-     color: #FFD700; /* 金色藏文 */
-     text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
-}
-.lang-chinese {
-    font-size: 2.8rem; /* 主標題中文 */
-    font-weight: 700;
-    margin-bottom: 0.3rem;
-     /* color: white; /* 已在 landing-page-container 設定 */
-}
-.lang-english {
-    font-size: 1.1rem;
-    font-weight: 400;
-    opacity: 0.85;
-    letter-spacing: 0.5px;
-}
+        /* ========== 響應式設計調整 ========== */
+        @media (max-width: 768px) {
+            .top-nav {
+                padding: 0 1rem;
+                height: 50px;
+            }
+            
+            .logo {
+                gap: 0.4rem;
+            }
+            
+            .logo-icon {
+                width: 26px;
+                height: 26px;
+                font-size: 0.8rem;
+            }
+            
+            .logo-text-multilang span {
+                max-width: 200px;
+            }
+            
+            .lang-tibetan-nav {
+                font-size: 0.65rem;
+            }
+            
+            .lang-chinese-nav {
+                font-size: 0.85rem;
+            }
+            
+            .lang-english-nav {
+                font-size: 0.55rem;
+            }
+            
+            .user-menu {
+                font-size: 0.9rem;
+            }
+            
+            .user-avatar {
+                width: 28px;
+                height: 28px;
+                font-size: 0.9rem;
+            }
 
-/* 主應用頂部導航多語言標題 */
-.logo-text-multilang {
-    display: flex;
-    flex-direction: column; /* 垂直排列 */
-    line-height: 1.1; /* 調整行高使文字更緊湊 */
-    align-items: flex-start; /* 左對齊 */
-}
-.logo-text-multilang span {
-    display: block;
-    white-space: nowrap; /* 防止換行 */
-    overflow: hidden;
-    text-overflow: ellipsis; /* 超出顯示省略號 */
-    max-width: 350px; /* 限制最大寬度，根據需要調整 */
-}
-.lang-tibetan-nav {
-    font-size: 0.75rem; /* 導航欄藏文小一點 */
-    font-family: "Jomolhari", "Microsoft Himalaya", "Kailash", serif;
-    color: #795548; /* 深一點的棕色 */
-    margin-bottom: 1px;
-}
-.lang-chinese-nav {
-    font-size: 0.95rem; /* 導航欄中文 */
-    font-weight: 600;
-    color: #5D4037; /* 主標題顏色 */
-}
-.lang-english-nav {
-    font-size: 0.65rem;
-    color: #A1887F; /* 淺一點的棕色 */
-    font-weight: 400;
-}
-.logo { /* 確保 logo 容器能容納多行文字 */
-    align-items: center; /* 垂直居中圖示和文字塊 */
-}
+            .main-container {
+                margin-top: 50px;
+                height: calc(100vh - 50px);
+                flex-direction: column;
+            }
 
+            .course-sidebar {
+                width: 100%;
+                max-height: 40vh;
+                overflow-y: auto;
+                border-right: none;
+                border-bottom: 1px solid #e0e0e0;
+            }
 
-/* 用戶下拉選單樣式 */
-.user-menu-container {
-    position: relative; /* 為下拉選單定位 */
-}
-.user-menu {
-    /* ... 保留之前的樣式 ... */
-    padding-right: 0.8rem; /* 為箭頭留空間 */
-}
-.dropdown-arrow {
-    font-size: 0.7rem;
-    margin-left: 5px;
-    transition: transform 0.2s ease-in-out;
-}
-.user-menu-container.open .dropdown-arrow {
-    transform: rotate(180deg);
-}
+            .chapter-title {
+                padding: 0.6rem 1rem;
+                font-size: 0.85rem;
+            }
+            
+            .lesson {
+                padding: 0.7rem 1rem 0.7rem 2rem;
+            }
+            
+            .lesson-title {
+                font-size: 0.8rem;
+            }
 
-.user-dropdown {
-    position: absolute;
-    top: calc(100% + 8px); /* 在用戶選單下方，帶一點間距 */
-    right: 0;
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    width: 220px; /* 下拉選單寬度 */
-    z-index: 110; /* 高於其他元素 */
-    overflow: hidden;
-    border: 1px solid #eee;
-    animation: fadeInDropdown 0.2s ease-out;
-}
+            .content-section {
+                margin: 0.5rem;
+            }
+            
+            .content-tab {
+                padding: 0.7rem 1rem;
+                font-size: 0.85rem;
+            }
+            
+            #currentLessonTitle {
+                font-size: 1.2rem;
+            }
+            
+            .tab-content p, .tab-content div {
+                font-size: 0.85rem;
+            }
+            
+            .bottom-controls {
+                padding: 0.5rem 1rem;
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            .control-btn {
+                width: 100%;
+                justify-content: center;
+            }
 
-@keyframes fadeInDropdown {
-    from { opacity: 0; transform: translateY(-10px); }
-    to { opacity: 1; transform: translateY(0); }
-}
+            .landing-title {
+                font-size: 2.2rem;
+            }
+            
+            .lang-tibetan {
+                font-size: 1.8rem;
+            }
+            
+            .lang-chinese {
+                font-size: 2rem;
+            }
+            
+            .lang-english {
+                font-size: 0.9rem;
+            }
+            
+            .landing-subtitle {
+                font-size: 1rem;
+                margin-bottom: 2rem;
+            }
+            
+            .landing-buttons {
+                gap: 1rem;
+                flex-direction: column;
+            }
+            
+            .landing-btn {
+                padding: 0.8rem 1.8rem;
+                width: 80%;
+                margin: 0 auto;
+            }
 
-.dropdown-user-info {
-    padding: 1rem;
-    border-bottom: 1px solid #f0f0f0;
-}
-.dropdown-user-info strong {
-    display: block;
-    font-size: 0.95rem;
-    color: #333;
-    margin-bottom: 0.25rem;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-.dropdown-user-info span {
-    font-size: 0.8rem;
-    color: #777;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
+            .auth-form {
+                padding: 1.5rem;
+            }
+            
+            #authFormTitle {
+                font-size: 1.3rem;
+            }
+            
+            .form-input, .auth-submit-btn {
+                font-size: 0.9rem;
+                padding: 0.7rem;
+            }
+        }
 
-.dropdown-item {
-    display: block;
-    padding: 0.75rem 1rem;
-    font-size: 0.9rem;
-    color: #555;
-    text-decoration: none;
-    transition: background-color 0.15s ease-in-out;
-}
-.dropdown-item:hover {
-    background-color: #f8f9fa;
-    color: #8B6F47;
-}
-.dropdown-item:not(:last-child) {
-    border-bottom: 1px solid #f5f5f5;
-}
-
- </style>
+        @media (max-width: 480px) {
+            .logo-text-multilang span {
+                max-width: 150px;
+            }
+            
+            .landing-title {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- 首頁 -->
-   <div id="landingPageContainer" class="landing-page-container">
-    <!-- 首頁的頂部導航可以保留，或者根據新設計調整/移除 -->
-    <!-- 例如，如果新首頁設計是全屏背景，頂部導航可能不需要或需要不同樣式 -->
-    <!-- 為了簡化，我先假設你希望首頁頂部是乾淨的，只有主要內容 -->
-
-    <div class="landing-content-wrapper"> <!-- 這是新的內容容器 -->
-        <div class="landing-title-multilang">
-            <div class="lang-tibetan">༄༅། །ཀཿཐོག་རིག་འཛིན་ཆེན་པོའི་ཆོས་ཀྱི་སྟེགས་བུ།</div>
-            <div class="lang-chinese">噶陀仁珍千寶課程平台</div>
-            <div class="lang-english">Kathog Rigzin Chenpo Dharma Platform</div>
-        </div>
-        <p class="landing-subtitle">
-            探索佛陀的智慧，開啟內心的平靜與覺照。系統化課程，引領您逐步深入經藏。
-        </p>
-        <div class="landing-buttons"> <!-- 沿用之前的按鈕，但類名可能需要統一 -->
-            <button class="landing-btn primary" onclick="enterAsGuest()">
-                開始學習
-            </button>
-            <button class="landing-btn secondary" onclick="showAuthModal('login')">
-                會員登入 / 註冊
-            </button>
+    <div id="landingPageContainer" class="landing-page-container">
+        <div class="landing-content-wrapper">
+            <div class="landing-title-multilang">
+                <div class="lang-tibetan">༄༅། །ཀཿཐོག་རིག་འཛིན་ཆེན་པོའི་ཆོས་ཀྱི་སྟེགས་བུ།</div>
+                <div class="lang-chinese">噶陀仁珍千寶課程平台</div>
+                <div class="lang-english">Kathok Rigzin Chenpo Dharma Platform</div>
+            </div>
+            <p class="landing-subtitle">
+                探索佛陀的智慧，開啟內心的平靜與覺照。系統化課程，引領您逐步深入經藏。
+            </p>
+            <div class="landing-buttons">
+                <button class="landing-btn primary" onclick="enterAsGuest()">
+                    開始學習
+                </button>
+                <button class="landing-btn secondary" onclick="showAuthModal('login')">
+                    會員登入 / 註冊
+                </button>
+            </div>
         </div>
     </div>
-</div>
 
     <!-- 主應用程式 -->
     <div id="mainApp" class="hidden">
         <nav class="top-nav">
-    <div class="nav-left">
-        <div class="logo" onclick="confirmBackToHome()">
-            <div class="logo-icon">噶</div>
-            <div class="logo-text-multilang">
-                <span class="lang-tibetan-nav">ཀཿཐོག་རིག་འཛིན་ཆེན་པོའི་ཆོས་ཀྱི་སྟེགས་བུ།</span>
-                <span class="lang-chinese-nav">噶陀仁珍千寶課程平台</span>
-                <span class="lang-english-nav">Kathok Rigzin Chenpo Dharma Platform</span>
+            <div class="nav-left">
+                <button id="hamburgerBtn" class="hamburger-button" style="display:none; margin-right: 10px; background:none; border:none; font-size:1.5rem; cursor:pointer;">☰</button>
+                <div class="logo" onclick="confirmBackToHome()">
+                    <div class="logo-icon">噶</div>
+                    <div class="logo-text-multilang">
+                        <span class="lang-tibetan-nav">ཀཿཐོག་རིག་འཛིན་ཆེན་པོའི་ཆོས་ཀྱི་སྟེགས་བུ།</span>
+                        <span class="lang-chinese-nav">噶陀仁珍千寶課程平台</span>
+                        <span class="lang-english-nav">Kathok Rigzin Chenpo Dharma Platform</span>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
-    <div class="nav-right">
-        <div class="user-menu-container"> <!-- 新增容器 -->
-            <div class="user-menu" onclick="toggleUserDropdown()"> <!-- 修改 onclick -->
-                <div class="user-avatar" id="userAvatar">訪</div>
-                <span id="userName">訪客</span>
-                <span class="dropdown-arrow" id="dropdownArrow">▼</span> <!-- 修改箭頭 -->
+            <div class="nav-right">
+                <div class="user-menu-container">
+                    <div class="user-menu" onclick="toggleUserDropdown()">
+                        <div class="user-avatar" id="userAvatar">訪</div>
+                        <span id="userName">訪客</span>
+                        <span class="dropdown-arrow" id="dropdownArrow">▼</span>
+                    </div>
+                    <div class="user-dropdown hidden" id="userDropdownMenu">
+                        <div class="dropdown-user-info">
+                            <strong id="dropdownUserName">訪客</strong>
+                            <span id="dropdownUserEmail"></span>
+                        </div>
+                    </div>
+                </div>
             </div>
-           <div class="user-dropdown hidden" id="userDropdownMenu">
-               <div class="dropdown-user-info">
-                 <strong id="dropdownUserName">訪客</strong> <!-- JS 會更新這裡 -->
-                 <span id="dropdownUserEmail"></span>   <!-- JS 會更新這裡 -->
-        </div>
-    <!-- .dropdown-item 將由 JavaScript 動態添加 -->
-            </div>
-        </div>
-    </div>
-</nav>
+        </nav>
 
-        <!-- (主應用程式的 main-container, course-sidebar, content-area, authModal 等 HTML 結構保持不變) -->
-        <!-- ... 這裡應該是你之前版本中 mainApp 的完整 HTML 結構 ... -->
         <div class="main-container">
             <aside class="course-sidebar" id="courseSidebar">
                 <div class="course-header">
@@ -460,7 +1094,7 @@ body {
             </aside>
 
             <main class="content-area">
-                <div id="welcomeContent"> <!-- 確保這個 div 存在 -->
+                <div id="welcomeContent">
                     <h1>歡迎來到課程學習平台</h1>
                     <p>請從左側選擇一個課程開始學習。</p>
                     <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%23e9ecef'/%3E%3Ctext x='200' y='140' font-family='Arial, sans-serif' font-size='24' fill='%23adb5bd' text-anchor='middle'%3E選擇課程以開始%3C/text%3E%3Cpath d='M150 200 L180 170 L220 210 L280 150' stroke='%23adb5bd' stroke-width='3' fill='none'/%3E%3Ccircle cx='100' cy='100' r='20' fill='%23ced4da'/%3E%3Crect x='280' y='80' width='40' height='40' rx='5' fill='%23ced4da'/%3E%3C/svg%3E" alt="課程預覽圖示">
@@ -497,7 +1131,6 @@ body {
         </div>
     </div>
 
-
     <!-- 登入/註冊彈窗 -->
     <div id="authModal" class="auth-modal hidden">
         <div class="auth-form">
@@ -531,17 +1164,15 @@ body {
         </div>
     </div>
 
-
-    <script>
-        // ========== Firebase 設定 (硬編碼) ==========
+        <script>
+        // Firebase 設定
         const firebaseConfig = {
-            apiKey: "AIzaSyDaupI9H72MGccVro4HUbsVhcXwSqYZeuU", // 請替換成你的 API Key
+            apiKey: "AIzaSyDaupI9H72MGccVro4HUbsVhcXwSqYZeuU", // ！！！請務必替換成您真實的 Firebase API Key！！！
             authDomain: "kathok-learning-platform.firebaseapp.com",
             projectId: "kathok-learning-platform",
             storageBucket: "kathok-learning-platform.appspot.com",
             messagingSenderId: "288334034961",
             appId: "1:288334034961:web:7eba5e9ab7378ad19c59b0",
-            // measurementId: "G-LRV77EC50T" // 如果有用到，取消註解
         };
 
         let auth;
@@ -557,29 +1188,32 @@ body {
             alert("系統初始化失敗，請檢查網路連線或稍後再試。");
         }
 
-        // ========== 全域變數 ==========
+        // 全域變數
         let currentUser = null;
         let currentPage = 'landing';
         let isLoginMode = true;
         let coursesData = [];
         let currentSelectedCourseIndex = -1;
+        let currentVideoIndex = 0;
 
         // DOM Elements
         const landingPageEl = document.getElementById('landingPageContainer');
         const mainAppEl = document.getElementById('mainApp');
         const authModalEl = document.getElementById('authModal');
-        // ... (其他你可能想快取的元素)
 
-        // ========== 初始頁面顯示 ==========
+        // ============================================================
+        // 所有獨立函數定義
+        // ============================================================
+
         function initializeAppDisplay() {
             if (auth && auth.currentUser) {
-                // onAuthStateChanged 會處理後續邏輯
+                // onAuthStateChanged 會處理後續邏輯, currentUser 會被設定
+                // 所以這裡可以不用急著 showMainApp，等待 onAuthStateChanged
             } else {
                 showLandingPage();
             }
         }
 
-        // ========== 頁面切換邏輯 ==========
         function showLandingPage() {
             landingPageEl.classList.remove('hidden');
             mainAppEl.classList.add('hidden');
@@ -590,32 +1224,47 @@ body {
             landingPageEl.classList.add('hidden');
             mainAppEl.classList.remove('hidden');
             currentPage = 'main';
+
             if (coursesData.length === 0) {
                 loadCourses();
             } else {
                 displayCourses();
             }
-            if (currentSelectedCourseIndex === -1 && document.getElementById('welcomeContent')) {
-                document.getElementById('welcomeContent').classList.remove('hidden');
-                if(document.getElementById('courseDisplayArea')) document.getElementById('courseDisplayArea').classList.add('hidden');
+
+            if (currentSelectedCourseIndex === -1) {
+                const welcomeContentEl = document.getElementById('welcomeContent');
+                if (welcomeContentEl) {
+                    welcomeContentEl.classList.remove('hidden');
+                }
+                const courseDisplayAreaEl = document.getElementById('courseDisplayArea');
+                if (courseDisplayAreaEl) {
+                    courseDisplayAreaEl.classList.add('hidden');
+                }
+            } else {
+                 // 如果有選中課程，確保課程區域顯示 (loadSingleCourse 會處理)
+                const courseDisplayAreaEl = document.getElementById('courseDisplayArea');
+                if (courseDisplayAreaEl) {
+                    courseDisplayAreaEl.classList.remove('hidden');
+                }
+                const welcomeContentEl = document.getElementById('welcomeContent');
+                if (welcomeContentEl) {
+                    welcomeContentEl.classList.add('hidden');
+                }
             }
         }
 
         function confirmBackToHome() {
             if (currentPage === 'main') {
                 if (confirm('確定要返回首頁嗎？')) {
-                    currentSelectedCourseIndex = -1; // 重置選中課程
+                    currentSelectedCourseIndex = -1;
+                    currentVideoIndex = 0;
                     showLandingPage();
                 }
             } else {
                 showLandingPage();
             }
         }
-        // ... (保留你之前的 JavaScript 核心邏輯: Auth, Firestore, 課程顯示等) ...
-        // 我會確保 auth, loadCourses, displayCourses, loadSingleCourse 等函數能配合新的UI
-        // 注意：需要調整 updateUserUI 為 updateUserNavUI 以更新新的頂部導航欄
 
-        // ========== 認證 (Auth) 相關 ==========
         function showAuthModal(mode = 'login') {
             isLoginMode = (mode === 'login');
             updateAuthModalUI();
@@ -644,35 +1293,48 @@ body {
                 submitBtnTextEl.textContent = '登入';
                 switchPromptEl.textContent = '還沒有帳號？';
                 switchLinkEl.textContent = '立即註冊';
-                usernameGroupEl.style.display = 'none';
+                if (usernameGroupEl) usernameGroupEl.style.display = 'none';
             } else {
                 titleEl.textContent = '註冊新帳號';
                 submitBtnTextEl.textContent = '註冊';
                 switchPromptEl.textContent = '已有帳號？';
                 switchLinkEl.textContent = '立即登入';
-                usernameGroupEl.style.display = 'block';
+                if (usernameGroupEl) usernameGroupEl.style.display = 'block';
             }
             clearAuthForm();
         }
 
         function clearAuthForm() {
-            document.getElementById('emailInput').value = '';
-            document.getElementById('usernameInput').value = '';
-            document.getElementById('passwordInput').value = '';
-            document.getElementById('authErrorMessage').textContent = '';
-            document.getElementById('authSuccessMessage').textContent = '';
-            document.getElementById('authSubmitButtonText').style.display = 'inline';
-            document.getElementById('authLoadingSpinner').classList.add('hidden');
+            const emailInputEl = document.getElementById('emailInput');
+            if (emailInputEl) emailInputEl.value = '';
+            const usernameInputEl = document.getElementById('usernameInput');
+            if (usernameInputEl) usernameInputEl.value = '';
+            const passwordInputEl = document.getElementById('passwordInput');
+            if (passwordInputEl) passwordInputEl.value = '';
+            
+            const authErrorMessageEl = document.getElementById('authErrorMessage');
+            if (authErrorMessageEl) authErrorMessageEl.textContent = '';
+            const authSuccessMessageEl = document.getElementById('authSuccessMessage');
+            if (authSuccessMessageEl) authSuccessMessageEl.textContent = '';
+            
+            const authSubmitButtonTextEl = document.getElementById('authSubmitButtonText');
+            if (authSubmitButtonTextEl) authSubmitButtonTextEl.style.display = 'inline';
+            const authLoadingSpinnerEl = document.getElementById('authLoadingSpinner');
+            if (authLoadingSpinnerEl) authLoadingSpinnerEl.classList.add('hidden');
         }
 
         function setAuthError(message) {
-            document.getElementById('authErrorMessage').textContent = message;
-            document.getElementById('authSuccessMessage').textContent = '';
+            const authErrorMessageEl = document.getElementById('authErrorMessage');
+            if (authErrorMessageEl) authErrorMessageEl.textContent = message;
+            const authSuccessMessageEl = document.getElementById('authSuccessMessage');
+            if (authSuccessMessageEl) authSuccessMessageEl.textContent = '';
         }
 
         function setAuthSuccess(message) {
-            document.getElementById('authSuccessMessage').textContent = message;
-            document.getElementById('authErrorMessage').textContent = '';
+            const authSuccessMessageEl = document.getElementById('authSuccessMessage');
+            if (authSuccessMessageEl) authSuccessMessageEl.textContent = message;
+            const authErrorMessageEl = document.getElementById('authErrorMessage');
+            if (authErrorMessageEl) authErrorMessageEl.textContent = '';
         }
 
         async function handleAuth() {
@@ -693,7 +1355,7 @@ body {
                 setAuthError('註冊時請填寫使用者名稱。');
                 return;
             }
-             if (!isLoginMode && username.length < 3) {
+            if (!isLoginMode && username.length < 3) {
                 setAuthError('使用者名稱至少需要3個字元。');
                 return;
             }
@@ -701,7 +1363,6 @@ body {
                 setAuthError('密碼至少需要6個字元。');
                 return;
             }
-
 
             document.getElementById('authSubmitButtonText').style.display = 'none';
             document.getElementById('authLoadingSpinner').classList.remove('hidden');
@@ -724,7 +1385,6 @@ body {
                 }
                 setTimeout(() => {
                     closeAuthModal();
-                    // onAuthStateChanged 會處理 showMainApp
                 }, 1200);
 
             } catch (error) {
@@ -752,7 +1412,11 @@ body {
         }
 
         async function loadUserData(firebaseUser) {
-            if (!db) return;
+            if (!db || !firebaseUser) { // 增加 firebaseUser 檢查
+                currentUser = null; // 如果 firebaseUser 為 null，確保 currentUser 也為 null
+                updateUserNavUI();
+                return;
+            }
             try {
                 const userDocRef = db.collection('users').doc(firebaseUser.uid);
                 const doc = await userDocRef.get();
@@ -760,8 +1424,8 @@ body {
                     currentUser = { uid: firebaseUser.uid, email: firebaseUser.email, ...doc.data() };
                     if (typeof currentUser.memberLevel === 'undefined') currentUser.memberLevel = 0;
                 } else {
-                    console.warn(`User document for ${firebaseUser.uid} not found. Creating one with default values.`);
-                    const defaultUsername = firebaseUser.email.split('@')[0];
+                    console.warn(`User document for ${firebaseUser.uid} not found. Using default values.`);
+                    const defaultUsername = firebaseUser.email ? firebaseUser.email.split('@')[0] : '用戶';
                     currentUser = {
                         uid: firebaseUser.uid,
                         email: firebaseUser.email,
@@ -769,84 +1433,133 @@ body {
                         memberLevel: 0,
                         memberLevelName: '一般會員'
                     };
-                    // 考慮是否要自動在 Firestore 中創建文檔
-                    // await userDocRef.set({ username: defaultUsername, email: firebaseUser.email, memberLevel: 0, joinDate: firebase.firestore.FieldValue.serverTimestamp() });
                 }
             } catch (error) {
                 console.error("Error loading user data:", error);
                 currentUser = { uid: firebaseUser.uid, email: firebaseUser.email, username: '載入失敗', memberLevel: 0 };
             }
-            updateUserNavUI(); // 更新頂部導航欄
+            updateUserNavUI();
         }
 
-     function updateUserNavUI() {
-    const userNameEl = document.getElementById('userName');
-    const userAvatarEl = document.getElementById('userAvatar');
-    const dropdownUserNameEl = document.getElementById('dropdownUserName');
-    const dropdownUserEmailEl = document.getElementById('dropdownUserEmail');
-    const userDropdownMenuEl = document.getElementById('userDropdownMenu'); // 獲取下拉選單元素
+        function toggleUserDropdown() {
+            const dropdownMenu = document.getElementById('userDropdownMenu');
+            const userMenuContainer = document.querySelector('.user-menu-container');
 
-    if (!userDropdownMenuEl) {
-        console.error("userDropdownMenu element not found in updateUserNavUI");
-        return;
-    }
+            if (dropdownMenu && userMenuContainer) {
+                dropdownMenu.classList.toggle('hidden');
+                userMenuContainer.classList.toggle('open');
+            } else {
+                console.error("找不到 userDropdownMenu 或 userMenuContainer 元素！");
+            }
+        }
 
-    // 先清空現有的下拉選單項目 (除了用戶資訊部分)
-    const existingItems = userDropdownMenuEl.querySelectorAll('.dropdown-item');
-    existingItems.forEach(item => item.remove());
+        function updateUserNavUI() {
+            const userNameEl = document.getElementById('userName');
+            const userAvatarEl = document.getElementById('userAvatar');
+            const dropdownUserNameEl = document.getElementById('dropdownUserName');
+            const dropdownUserEmailEl = document.getElementById('dropdownUserEmail');
+            const userDropdownMenuEl = document.getElementById('userDropdownMenu');
 
-    if (currentUser) {
-        const displayName = currentUser.username || currentUser.email.split('@')[0];
-        userNameEl.textContent = displayName;
-        userAvatarEl.textContent = displayName.charAt(0).toUpperCase();
-        if(dropdownUserNameEl) dropdownUserNameEl.textContent = displayName;
-        if(dropdownUserEmailEl) dropdownUserEmailEl.textContent = currentUser.email;
+            if (!userNameEl || !userAvatarEl || !dropdownUserNameEl || !dropdownUserEmailEl || !userDropdownMenuEl) {
+                console.error("One or more user nav UI elements not found.");
+                return;
+            }
 
-        // 添加會員下拉項目
-        const switchToGuestItem = document.createElement('a');
-        switchToGuestItem.href = "#";
-        switchToGuestItem.className = 'dropdown-item';
-        switchToGuestItem.textContent = '切換為訪客模式';
-        switchToGuestItem.onclick = function(event) { event.preventDefault(); switchToGuestMode(); };
-        userDropdownMenuEl.appendChild(switchToGuestItem);
+            const existingItems = userDropdownMenuEl.querySelectorAll('.dropdown-item');
+            existingItems.forEach(item => item.remove());
 
-        const logoutItem = document.createElement('a');
-        logoutItem.href = "#";
-        logoutItem.className = 'dropdown-item';
-        logoutItem.textContent = '登出';
-        logoutItem.onclick = function(event) { event.preventDefault(); logoutUser(); };
-        userDropdownMenuEl.appendChild(logoutItem);
+            if (currentUser && currentUser.email) { // 確保 currentUser 和 email 存在
+                const displayName = currentUser.username || currentUser.email.split('@')[0];
+                userNameEl.textContent = displayName;
+                userAvatarEl.textContent = displayName.charAt(0).toUpperCase();
+                dropdownUserNameEl.textContent = displayName;
+                dropdownUserEmailEl.textContent = currentUser.email;
 
-    } else {
-        userNameEl.textContent = '訪客';
-        userAvatarEl.textContent = '訪';
-        if(dropdownUserNameEl) dropdownUserNameEl.textContent = '訪客';
-        if(dropdownUserEmailEl) dropdownUserEmailEl.textContent = '尚未登入';
+                const switchToGuestItem = document.createElement('a');
+                switchToGuestItem.href = "#";
+                switchToGuestItem.className = 'dropdown-item';
+                switchToGuestItem.textContent = '切換為訪客模式';
+                switchToGuestItem.onclick = function(event) { event.preventDefault(); switchToGuestMode(); };
+                userDropdownMenuEl.appendChild(switchToGuestItem);
 
-        // 添加訪客下拉項目
-        const loginRegisterItem = document.createElement('a');
-        loginRegisterItem.href = "#";
-        loginRegisterItem.className = 'dropdown-item';
-        loginRegisterItem.textContent = '登入 / 註冊';
-        loginRegisterItem.onclick = function(event) {
-            event.preventDefault();
-            toggleUserDropdown(); // 先關閉下拉選單
-            showAuthModal('login'); // 然後打開登入模態框
-        };
-        userDropdownMenuEl.appendChild(loginRegisterItem);
-    }
-}
+                const logoutItem = document.createElement('a');
+                logoutItem.href = "#";
+                logoutItem.className = 'dropdown-item';
+                logoutItem.textContent = '登出';
+                logoutItem.onclick = function(event) { event.preventDefault(); logoutUser(); };
+                userDropdownMenuEl.appendChild(logoutItem);
+
+            } else {
+                userNameEl.textContent = '訪客';
+                userAvatarEl.textContent = '訪';
+                dropdownUserNameEl.textContent = '訪客';
+                dropdownUserEmailEl.textContent = '尚未登入';
+
+                const loginRegisterItem = document.createElement('a');
+                loginRegisterItem.href = "#";
+                loginRegisterItem.className = 'dropdown-item';
+                loginRegisterItem.textContent = '登入 / 註冊';
+                loginRegisterItem.onclick = function(event) {
+                    event.preventDefault();
+                    if (typeof toggleUserDropdown === 'function') toggleUserDropdown();
+                    if (typeof showAuthModal === 'function') showAuthModal('login');
+                };
+                userDropdownMenuEl.appendChild(loginRegisterItem);
+            }
+        }
+
+        function switchToGuestMode() {
+            if (auth && auth.currentUser) {
+                auth.signOut().then(() => {
+                    // currentUser 會在 onAuthStateChanged 中被設為 null
+                    // updateUserNavUI 也會在 onAuthStateChanged 中被調用
+                    if (typeof toggleUserDropdown === 'function') toggleUserDropdown(); // 關閉下拉選單
+                    // 通常切換到訪客模式也會顯示主應用，讓 onAuthStateChanged 處理 currentUser=null 的情況
+                    showMainApp(); // 確保是以訪客身份查看主應用
+                }).catch(error => {
+                    console.error("Error signing out for guest mode:", error);
+                });
+            } else {
+                // 如果本來就沒有登入用戶，直接處理UI
+                currentUser = null;
+                updateUserNavUI();
+                if (typeof toggleUserDropdown === 'function') toggleUserDropdown();
+                showMainApp();
+            }
+        }
+
+        function logoutUser() {
+            if (auth && auth.currentUser) {
+                auth.signOut().then(() => {
+                    // currentUser 會在 onAuthStateChanged 中被設為 null
+                    // updateUserNavUI 也會在 onAuthStateChanged 中被調用
+                    if (typeof toggleUserDropdown === 'function') toggleUserDropdown(); // 關閉下拉選單
+                    showLandingPage(); // 登出後返回首頁
+                }).catch(error => {
+                    console.error("Error signing out:", error);
+                });
+            } else {
+                 showLandingPage(); // 如果沒有用戶，也導向首頁
+            }
+        }
 
         function enterAsGuest() {
             if (auth && auth.currentUser) {
+                // 如果當前有用戶登入，先登出
                 auth.signOut().then(() => {
-                    currentUser = null; // 確保 currentUser 被清空
+                    // onAuthStateChanged 會處理 currentUser = null 和 updateUserNavUI
+                    showMainApp();
+                }).catch(error => {
+                    console.error("Error signing out before entering as guest:", error);
+                    // 即使登出失敗，也嘗試以訪客身份進入
+                    currentUser = null; // 強制設為訪客
                     updateUserNavUI();
                     showMainApp();
                 });
             } else {
+                // 如果本來就沒有用戶登入，直接作為訪客進入
                 currentUser = null;
-                updateUserNavUI();
+                updateUserNavUI(); // 確保 UI 更新為訪客狀態
                 showMainApp();
             }
         }
@@ -854,99 +1567,98 @@ body {
         async function loadCourses() {
             if (!db) return;
             const loadingMsgEl = document.getElementById('loadingCoursesMessage');
-            loadingMsgEl.style.display = 'block';
-            loadingMsgEl.textContent = '載入課程中...';
-            document.getElementById('chapterList').innerHTML = '';
+            if (loadingMsgEl) {
+                loadingMsgEl.style.display = 'block';
+                loadingMsgEl.textContent = '載入課程中...';
+            }
+            const chapterListEl = document.getElementById('chapterList');
+            if (chapterListEl) chapterListEl.innerHTML = '';
 
             try {
-                const snapshot = await db.collection('courses').orderBy('order', 'asc').get(); // 確保有 'order' 欄位
+                const snapshot = await db.collection('courses').orderBy('order', 'asc').get();
                 coursesData = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
                 displayCourses();
-                loadingMsgEl.style.display = 'none';
+                if (loadingMsgEl) loadingMsgEl.style.display = 'none';
             } catch (error) {
                 console.error("Error loading courses:", error);
-                loadingMsgEl.textContent = '載入課程失敗。';
+                if (loadingMsgEl) loadingMsgEl.textContent = '載入課程失敗。';
             }
         }
 
-function displayCourses() {
-    const chapterListEl = document.getElementById('chapterList');
-    if (!chapterListEl) { // 檢查 DOM 元素
-        console.error("chapterList element not found in displayCourses.");
-        return;
-    }
-    chapterListEl.innerHTML = ''; // 清空
-    const userLevel = currentUser ? (currentUser.memberLevel || 0) : 0;
-    console.log("Displaying courses for userLevel:", userLevel, "Current user:", currentUser); // 日誌
+        function displayCourses() {
+            const chapterListEl = document.getElementById('chapterList');
+            if (!chapterListEl) {
+                console.error("chapterList element not found in displayCourses.");
+                return;
+            }
+            chapterListEl.innerHTML = '';
+            const userLevel = currentUser ? (currentUser.memberLevel || 0) : 0;
 
-    const coursesByCategory = {};
-    if (!coursesData || coursesData.length === 0) { // 檢查 coursesData 是否有數據
-        console.log("No courses data to display.");
-        chapterListEl.innerHTML = '<p style="padding: 1rem; text-align: center; color: #888;">目前沒有課程。</p>';
-        return;
-    }
+            const coursesByCategory = {};
+            if (!coursesData || coursesData.length === 0) {
+                chapterListEl.innerHTML = '<p style="padding: 1rem; text-align: center; color: #888;">目前沒有課程。</p>';
+                return;
+            }
 
-    coursesData.forEach(course => {
-        const category = course.category || '所有課程';
-        if (!coursesByCategory[category]) coursesByCategory[category] = [];
-        coursesByCategory[category].push(course);
-    });
+            coursesData.forEach(course => {
+                const category = course.category || '所有課程';
+                if (!coursesByCategory[category]) coursesByCategory[category] = [];
+                coursesByCategory[category].push(course);
+            });
 
-    if (Object.keys(coursesByCategory).length === 0 && coursesData.length > 0) {
-         coursesByCategory['所有課程'] = [...coursesData];
-    }
+            if (Object.keys(coursesByCategory).length === 0 && coursesData.length > 0) {
+                coursesByCategory['所有課程'] = [...coursesData];
+            }
 
-    let globalLessonCounter = 0;
-    Object.keys(coursesByCategory).sort().forEach((category, categoryIndex) => {
-        const chapterDiv = document.createElement('div');
-        chapterDiv.className = 'chapter';
-        if (categoryIndex === 0) chapterDiv.classList.add('expanded');
+            let globalLessonCounter = 0;
+            Object.keys(coursesByCategory).sort().forEach((category, categoryIndex) => {
+                const chapterDiv = document.createElement('div');
+                chapterDiv.className = 'chapter';
+                if (categoryIndex === 0) chapterDiv.classList.add('expanded');
 
-        let lessonsHTML = '';
-        coursesByCategory[category].forEach(course => {
-            const requiredLevel = typeof course.requiredLevel === 'number' ? course.requiredLevel : 0;
-            const isLocked = requiredLevel > userLevel;
-            // const courseGlobalIndex = coursesData.findIndex(c => c.id === course.id); // 這一行可以簡化，因為我們是遍歷 coursesData 處理的
-            const courseGlobalIndex = coursesData.indexOf(course);
+                let lessonsHTML = '';
+                coursesByCategory[category].forEach(course => {
+                    const requiredLevel = typeof course.requiredLevel === 'number' ? course.requiredLevel : 0;
+                    const isLocked = requiredLevel > userLevel;
+                    const courseGlobalIndex = coursesData.indexOf(course);
+                    const courseTitleEscaped = course.title ? course.title.replace(/'/g, "\\'") : "未知標題";
 
+                    lessonsHTML += `
+                        <div class="lesson ${isLocked ? 'locked' : ''} ${currentSelectedCourseIndex === courseGlobalIndex ? 'active' : ''}"
+                             data-course-index="${courseGlobalIndex}"
+                             onclick="handleLessonClick(${courseGlobalIndex}, ${isLocked}, '${courseTitleEscaped}', ${requiredLevel})">
+                            <div class="lesson-icon-wrapper"><span class="lesson-icon">${globalLessonCounter + 1}</span></div>
+                            <div class="lesson-info">
+                                <div class="lesson-title">${course.title || "未知標題"}</div>
+                                <div class="lesson-duration">${course.duration || ''}</div>
+                            </div>
+                        </div>
+                    `;
+                    globalLessonCounter++;
+                });
 
-            // 檢查 course.title 是否存在
-            const courseTitle = course.title ? course.title.replace(/'/g, "\\'") : "未知標題";
-
-            lessonsHTML += `
-                <div class="lesson ${isLocked ? 'locked' : ''} ${currentSelectedCourseIndex === courseGlobalIndex ? 'active' : ''}"
-                     data-course-index="${courseGlobalIndex}"
-                     onclick="handleLessonClick(${courseGlobalIndex}, ${isLocked}, '${courseTitle}', ${requiredLevel})">
-                    <div class="lesson-icon-wrapper"><span class="lesson-icon">${globalLessonCounter + 1}</span></div>
-                    <div class="lesson-info">
-                        <div class="lesson-title">${course.title || "未知標題"}</div>
-                        <div class="lesson-duration">${course.duration || ''}</div>
+                chapterDiv.innerHTML = `
+                    <div class="chapter-title" onclick="toggleChapterExpansion(this)">
+                        <span>${category}</span>
+                        <span class="chapter-icon">${categoryIndex === 0 ? '▼' : '▶'}</span>
                     </div>
-                </div>
-            `;
-            globalLessonCounter++;
-        });
+                    <div class="lesson-list">${lessonsHTML}</div>
+                `;
+                chapterListEl.appendChild(chapterDiv);
+            });
 
-        chapterDiv.innerHTML = `
-            <div class="chapter-title" onclick="toggleChapterExpansion(this)">
-                <span>${category}</span>
-                <span class="chapter-icon">${categoryIndex === 0 ? '▼' : '▶'}</span>
-            </div>
-            <div class="lesson-list">${lessonsHTML}</div>
-        `;
-        chapterListEl.appendChild(chapterDiv);
-    });
-
-     if (globalLessonCounter === 0) { // 再次檢查，如果分類後沒有課程
-         chapterListEl.innerHTML = '<p style="padding: 1rem; text-align: center; color: #888;">目前沒有可顯示的課程。</p>';
-     }
-}
-
+            if (globalLessonCounter === 0) {
+                chapterListEl.innerHTML = '<p style="padding: 1rem; text-align: center; color: #888;">目前沒有可顯示的課程。</p>';
+            }
+        }
 
         function toggleChapterExpansion(chapterTitleElement) {
+            if (!chapterTitleElement || !chapterTitleElement.parentElement) return;
             chapterTitleElement.parentElement.classList.toggle('expanded');
             const icon = chapterTitleElement.querySelector('.chapter-icon');
-            icon.textContent = chapterTitleElement.parentElement.classList.contains('expanded') ? '▼' : '▶';
+            if (icon) {
+                icon.textContent = chapterTitleElement.parentElement.classList.contains('expanded') ? '▼' : '▶';
+            }
         }
 
         function handleLessonClick(courseIndex, isLocked, courseTitle, requiredLevel) {
@@ -963,94 +1675,137 @@ function displayCourses() {
             loadSingleCourse(courseIndex);
         }
 
-function loadSingleCourse(courseIndex) {
-    // 1. 參數有效性檢查 (這部分你已經有了)
-    if (courseIndex < 0 || courseIndex >= coursesData.length) {
-        console.warn("Invalid course index for loadSingleCourse:", courseIndex);
-        return;
-    }
-    currentSelectedCourseIndex = courseIndex; // 更新全域選中索引 (這部分你可能也有)
+        function loadSingleCourse(courseIndex) {
+            if (courseIndex < 0 || courseIndex >= coursesData.length) {
+                console.warn("Invalid course index for loadSingleCourse:", courseIndex);
+                return;
+            }
+            currentSelectedCourseIndex = courseIndex;
+            currentVideoIndex = 0;
 
-    // 2. ↓↓↓ 在這裡添加缺失的行 ↓↓↓
-    const course = coursesData[courseIndex];
+            const course = coursesData[courseIndex];
 
-    // 3. 對 course 物件本身進行檢查 (這是一個好習慣)
-    if (!course) {
-        console.error("Course object is undefined for index:", courseIndex, "coursesData:", coursesData);
-        // 可以在這裡顯示一個用戶提示，例如 "無法載入所選課程資料。"
-        // 或者嘗試隱藏課程顯示區域，顯示歡迎訊息
-        if(document.getElementById('courseDisplayArea')) document.getElementById('courseDisplayArea').classList.add('hidden');
-        if(document.getElementById('welcomeContent')) document.getElementById('welcomeContent').classList.remove('hidden');
-        return;
-    }
+            if (!course) {
+                console.error("Course object is undefined for index:", courseIndex);
+                const courseDisplayAreaEl = document.getElementById('courseDisplayArea');
+                if (courseDisplayAreaEl) courseDisplayAreaEl.classList.add('hidden');
+                const welcomeContentEl = document.getElementById('welcomeContent');
+                if (welcomeContentEl) welcomeContentEl.classList.remove('hidden');
+                return;
+            }
 
-    // 4. 後續使用 course 變數的程式碼 (保持不變或根據需要調整)
-    console.log("Loading single course:", course.title, course);
+            console.log("Loading single course:", course.title);
 
-    document.querySelectorAll('.lesson').forEach(el => el.classList.remove('active'));
-    const activeLessonEl = document.querySelector(`.lesson[data-course-index="${courseIndex}"]`);
-    if (activeLessonEl) {
-        activeLessonEl.classList.add('active');
-    } else {
-        console.warn("Could not find lesson element with data-course-index:", courseIndex);
-    }
+            document.querySelectorAll('.lesson').forEach(el => el.classList.remove('active'));
+            const activeLessonEl = document.querySelector(`.lesson[data-course-index="${courseIndex}"]`);
+            if (activeLessonEl) activeLessonEl.classList.add('active');
+            else console.warn("Could not find lesson element for active state:", courseIndex);
 
-    if(document.getElementById('welcomeContent')) document.getElementById('welcomeContent').classList.add('hidden');
-    if(document.getElementById('courseDisplayArea')) document.getElementById('courseDisplayArea').classList.remove('hidden');
+            const welcomeContentEl = document.getElementById('welcomeContent');
+            if (welcomeContentEl) welcomeContentEl.classList.add('hidden');
+            const courseDisplayAreaEl = document.getElementById('courseDisplayArea');
+            if (courseDisplayAreaEl) courseDisplayAreaEl.classList.remove('hidden');
 
-    document.getElementById('currentLessonTitle').textContent = course.title || "未知標題";
-    const descriptionHTML = course.description ? course.description.replace(/\n/g, '<br>') : '暫無課程概覽。';
-    document.getElementById('currentLessonDescription').innerHTML = descriptionHTML;
+            document.getElementById('currentLessonTitle').textContent = course.title || "未知標題";
+            const descriptionHTML = course.description ? course.description.replace(/\n/g, '<br>') : '暫無課程概覽。';
+            document.getElementById('currentLessonDescription').innerHTML = descriptionHTML;
+            const transcriptHTML = course.transcript ? course.transcript.replace(/\n/g, '<br>') : '<p>暫無課程講義。</p>';
+            document.getElementById('transcriptContent').innerHTML = transcriptHTML;
 
-    const transcriptHTML = course.transcript ? course.transcript.replace(/\n/g, '<br>') : '<p>暫無課程講義。</p>';
-    document.getElementById('transcriptContent').innerHTML = transcriptHTML;
+            updateVideoPlayer();
+            updateNavigationButtons();
+            switchTab(null, 'overviewTab', true);
+        }
 
-    const youtubePlayer = document.getElementById('youtubePlayer');
-    let videoSrc = '';
-    // 使用我之前建議的修改後的影片 src 設定邏輯
-    if (course.playlistId && String(course.playlistId).trim() !== "") {
-        videoSrc = `https://www.youtube.com/embed/videoseries?list=${String(course.playlistId).trim()}&autoplay=0&showinfo=1&controls=1&loop=0`;
-    } else if (course.youtubeVideoId && String(course.youtubeVideoId).trim() !== "") {
-        videoSrc = `https://www.youtube.com/embed/${String(course.youtubeVideoId).split('&')[0]}?modestbranding=1&rel=0&autoplay=0`;
-    } else {
-        console.log("No video ID or playlist ID for course:", course.title || "Unknown Title");
-        videoSrc = "";
-    }
-    youtubePlayer.src = videoSrc;
-    console.log("Set video src to:", videoSrc);
+        function updateVideoPlayer() {
+            if (currentSelectedCourseIndex < 0 || currentSelectedCourseIndex >= coursesData.length) return;
+            const course = coursesData[currentSelectedCourseIndex];
+            if (!course) return;
 
-    updateNavigationButtons();
-    switchTab(null, 'overviewTab', true);
-}
+            const youtubePlayer = document.getElementById('youtubePlayer');
+            if (!youtubePlayer) return;
+            let videoSrc = '';
+
+            if (course.playlistId && String(course.playlistId).trim() !== "") {
+                videoSrc = `https://www.youtube.com/embed/videoseries?list=${String(course.playlistId).trim()}&index=${currentVideoIndex + 1}&autoplay=0&showinfo=1&controls=1&loop=0`;
+            } else if (course.youtubeVideoId && String(course.youtubeVideoId).trim() !== "") {
+                videoSrc = `https://www.youtube.com/embed/${String(course.youtubeVideoId).split('&')[0]}?modestbranding=1&rel=0&autoplay=0`;
+            } else {
+                videoSrc = ""; // 清空 src 或顯示提示
+            }
+            youtubePlayer.src = videoSrc;
+        }
+
         function previousLesson() {
-            if (currentSelectedCourseIndex > 0) {
+            if (currentSelectedCourseIndex < 0 || currentSelectedCourseIndex >= coursesData.length) return;
+            const course = coursesData[currentSelectedCourseIndex];
+            if (!course) return;
+
+            if (course.playlistId && currentVideoIndex > 0) {
+                currentVideoIndex--;
+                updateVideoPlayer();
+                updateNavigationButtons(); // 更新按鈕狀態和文字
+            } else if (currentSelectedCourseIndex > 0) {
                 loadSingleCourse(currentSelectedCourseIndex - 1);
             }
         }
 
         function nextLesson() {
-            if (currentSelectedCourseIndex < coursesData.length - 1) {
+            if (currentSelectedCourseIndex < 0 || currentSelectedCourseIndex >= coursesData.length) return;
+            const course = coursesData[currentSelectedCourseIndex];
+            if (!course) return;
+
+            const maxPlaylistVideos = course.playlistVideoCount || (course.playlistId ? 10 : 1); // 如果是播放列表但未指定數量，預設10，單影片為1
+
+            if (course.playlistId && currentVideoIndex < maxPlaylistVideos - 1) {
+                currentVideoIndex++;
+                updateVideoPlayer();
+                updateNavigationButtons(); // 更新按鈕狀態和文字
+            } else if (currentSelectedCourseIndex < coursesData.length - 1) {
                 loadSingleCourse(currentSelectedCourseIndex + 1);
             }
         }
 
         function updateNavigationButtons() {
-            document.getElementById('prevLessonBtn').disabled = currentSelectedCourseIndex <= 0;
-            document.getElementById('nextLessonBtn').disabled = currentSelectedCourseIndex >= coursesData.length - 1;
+            if (currentSelectedCourseIndex < 0 || currentSelectedCourseIndex >= coursesData.length) return;
+            const course = coursesData[currentSelectedCourseIndex];
+            if (!course) return;
+
+            const prevBtn = document.getElementById('prevLessonBtn');
+            const nextBtn = document.getElementById('nextLessonBtn');
+            if (!prevBtn || !nextBtn) return;
+
+            const isFirstCourseOverall = currentSelectedCourseIndex === 0 && (!course.playlistId || currentVideoIndex === 0);
+            const isLastCourseOverall = currentSelectedCourseIndex === coursesData.length - 1 && 
+                                       (!course.playlistId || currentVideoIndex >= (course.playlistVideoCount || (course.playlistId ? 10 : 1)) - 1);
+
+            prevBtn.disabled = isFirstCourseOverall;
+            nextBtn.disabled = isLastCourseOverall;
+            
+            // 更新按鈕文字邏輯可以保持或根據需求調整
+            if (course.playlistId) {
+                const maxPlaylistVideos = course.playlistVideoCount || 10;
+                prevBtn.innerHTML = currentVideoIndex > 0 ? '← 上一集' : '← 上一課';
+                nextBtn.innerHTML = currentVideoIndex < maxPlaylistVideos - 1 ? '下一集 →' : '下一課 →';
+            } else {
+                prevBtn.innerHTML = '← 上一課';
+                nextBtn.innerHTML = '下一課 →';
+            }
         }
 
         function switchTab(event, tabId, isDefault = false) {
             document.querySelectorAll('.tab-content').forEach(tc => tc.classList.remove('active'));
-            document.getElementById(tabId).classList.add('active');
+            const tabContentEl = document.getElementById(tabId);
+            if (tabContentEl) tabContentEl.classList.add('active');
 
             document.querySelectorAll('.content-tab').forEach(tb => tb.classList.remove('active'));
             let targetTabButton;
             if (event && event.currentTarget) {
-                 targetTabButton = event.currentTarget;
+                targetTabButton = event.currentTarget;
             } else if (isDefault) {
                 const tabs = document.querySelectorAll('.content-tab');
                 for (let tab of tabs) {
-                    if (tab.getAttribute('onclick').includes(tabId)) {
+                    if (tab.getAttribute('onclick') && tab.getAttribute('onclick').includes(tabId)) {
                         targetTabButton = tab;
                         break;
                     }
@@ -1059,31 +1814,98 @@ function loadSingleCourse(courseIndex) {
             if (targetTabButton) targetTabButton.classList.add('active');
         }
 
-        document.addEventListener('DOMContentLoaded', () => {
-            if (typeof firebase !== 'undefined' && auth && db) {
-                initializeAppDisplay();
-            } else {
-                showLandingPage();
+        // ============================================================
+        // 事件監聽器 (通常放在所有函數定義之後)
+        // ============================================================
+
+        if (auth) {
+            auth.onAuthStateChanged(function(firebaseUser) {
+                if (firebaseUser) {
+                    loadUserData(firebaseUser).then(() => {
+                        if (currentPage === 'landing') {
+                            showMainApp();
+                        }
+                         // 如果已在主應用且用戶登入/切換，刷新課程權限
+                        if (currentPage === 'main' && coursesData.length > 0) {
+                            displayCourses(); // 重新根據用戶等級渲染課程鎖定狀態
+                            if(currentSelectedCourseIndex !== -1) {
+                                // 如果之前有選中的課程，需要檢查是否因為權限變化而鎖定
+                                const course = coursesData[currentSelectedCourseIndex];
+                                const requiredLevel = typeof course.requiredLevel === 'number' ? course.requiredLevel : 0;
+                                const userLevel = currentUser ? (currentUser.memberLevel || 0) : 0;
+                                if (requiredLevel > userLevel) { // 如果當前課程變為鎖定
+                                    currentSelectedCourseIndex = -1; // 重置選中
+                                    showMainApp(); // 回到歡迎頁面或第一個可用課程
+                                }
+                            }
+                        }
+                    });
+                } else {
+                    currentUser = null;
+                    updateUserNavUI();
+                    // 如果在主應用頁面且用戶登出，刷新課程（全部變為訪客可見或鎖定）
+                    if (currentPage === 'main') {
+                        if (coursesData.length > 0) {
+                           displayCourses(); // 重新渲染課程列表
+                        }
+                        // 可以選擇是否強制用戶返回首頁，或者允許他們繼續以訪客身份瀏覽（如果設計允許）
+                        // showLandingPage(); 
+                        // 或者，如果當前課程需要登入，則重置
+                        if (currentSelectedCourseIndex !== -1) {
+                             const course = coursesData[currentSelectedCourseIndex];
+                             if(course && (typeof course.requiredLevel === 'number' ? course.requiredLevel : 0) > 0) {
+                                currentSelectedCourseIndex = -1;
+                                showMainApp(); // 回到歡迎頁
+                             }
+                        }
+                    }
+                }
+            });
+        }
+
+        document.addEventListener('click', function(event) {
+            const userMenuContainer = document.querySelector('.user-menu-container');
+            const userDropdownMenu = document.getElementById('userDropdownMenu');
+            if (userMenuContainer && userDropdownMenu && !userMenuContainer.contains(event.target) && !userDropdownMenu.classList.contains('hidden')) {
+                toggleUserDropdown(); // 使用 toggleUserDropdown 來保持狀態一致性
             }
+
+            if (authModalEl && event.target === authModalEl && !authModalEl.classList.contains('hidden')) {
+                closeAuthModal();
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            initializeAppDisplay();
+
             const authModalInputs = ['emailInput', 'usernameInput', 'passwordInput'];
             authModalInputs.forEach(id => {
                 const input = document.getElementById(id);
                 if (input) {
                     input.addEventListener('keypress', function(e) {
-                        if (e.key === 'Enter' && !authModalEl.classList.contains('hidden')) {
+                        if (e.key === 'Enter' && authModalEl && !authModalEl.classList.contains('hidden')) {
                             handleAuth();
                         }
                     });
                 }
             });
-        });
 
-        window.addEventListener('click', function(event) {
-            if (event.target === authModalEl) {
-                closeAuthModal();
+            const hamburgerBtn = document.getElementById('hamburgerBtn');
+            const courseSidebar = document.getElementById('courseSidebar');
+            const mainContainer = document.querySelector('.main-container');
+
+            if (hamburgerBtn && courseSidebar && mainContainer) {
+                hamburgerBtn.addEventListener('click', () => {
+                    courseSidebar.classList.toggle('open');
+                    mainContainer.classList.toggle('sidebar-open');
+                });
+
+                mainContainer.addEventListener('click', (event) => {
+                    if (mainContainer.classList.contains('sidebar-open') && event.target === mainContainer) {
+                        courseSidebar.classList.remove('open');
+                        mainContainer.classList.remove('sidebar-open');
+                    }
+                });
             }
         });
-
     </script>
-</body>
-</html>
